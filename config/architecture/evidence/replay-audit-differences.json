@@ -1,0 +1,10 @@
+{
+  "first_rows": 8484,
+  "replay_rows": 8484,
+  "different_rows": 644,
+  "all_differences_non_workload": true,
+  "fields_differing": {
+    "name": 644,
+    "ndn_wire_bytes": 244
+  }
+}

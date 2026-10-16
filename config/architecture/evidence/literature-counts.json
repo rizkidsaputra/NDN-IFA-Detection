@@ -1,0 +1,151 @@
+{
+  "status": "PASS",
+  "scope": "Targeted collection; partial full-text evidence; not prevalence of all NDN",
+  "catalog_references": 50,
+  "screening_label_date": "2026-10-16",
+  "consolidation_date": "2026-10-17",
+  "topology": {
+    "Tree/binary tree": {
+      "count": 7,
+      "denominator": 18,
+      "percent": 38.9,
+      "ids": [
+        "T001",
+        "T002",
+        "T003",
+        "T012",
+        "T013",
+        "T022",
+        "T023"
+      ]
+    },
+    "DFN/DFN-like": {
+      "count": 5,
+      "denominator": 18,
+      "percent": 27.8,
+      "ids": [
+        "T001",
+        "T002",
+        "T003",
+        "T017",
+        "T043"
+      ]
+    },
+    "Rocketfuel ISP": {
+      "count": 4,
+      "denominator": 18,
+      "percent": 22.2,
+      "ids": [
+        "T001",
+        "T008",
+        "T010",
+        "T018"
+      ]
+    },
+    "Grid": {
+      "count": 3,
+      "denominator": 18,
+      "percent": 16.7,
+      "ids": [
+        "T004",
+        "T014",
+        "T021"
+      ]
+    },
+    "Small mesh": {
+      "count": 2,
+      "denominator": 18,
+      "percent": 11.1,
+      "ids": [
+        "T019",
+        "T020"
+      ]
+    },
+    "Rantai router dengan endpoint bercabang": {
+      "count": 1,
+      "denominator": 18,
+      "percent": 5.6,
+      "ids": [
+        "T011"
+      ]
+    },
+    "Small/SPOTIFAI; shape not explicitly restated": {
+      "count": 1,
+      "denominator": 18,
+      "percent": 5.6,
+      "ids": [
+        "T043"
+      ]
+    },
+    "Random geometric": {
+      "count": 1,
+      "denominator": 18,
+      "percent": 5.6,
+      "ids": [
+        "T014"
+      ]
+    },
+    "Scale-free": {
+      "count": 1,
+      "denominator": 18,
+      "percent": 5.6,
+      "ids": [
+        "T014"
+      ]
+    }
+  },
+  "architecture": {
+    "Local router/node; termasuk peer cooperation dan cascade router/interface": {
+      "count": 8,
+      "denominator": 15,
+      "percent": 53.3,
+      "ids": [
+        "T002",
+        "T004",
+        "T011",
+        "T012",
+        "T018",
+        "T019",
+        "T021",
+        "T023"
+      ]
+    },
+    "Role-based hierarchy or coordination (RSU/gateway/controller)": {
+      "count": 3,
+      "denominator": 15,
+      "percent": 20.0,
+      "ids": [
+        "T003",
+        "T014",
+        "T017"
+      ]
+    },
+    "Central ISP/cloud graph detection": {
+      "count": 2,
+      "denominator": 15,
+      "percent": 13.3,
+      "ids": [
+        "T001",
+        "T043"
+      ]
+    },
+    "Federated collaborative learning": {
+      "count": 2,
+      "denominator": 15,
+      "percent": 13.3,
+      "ids": [
+        "T013",
+        "T016"
+      ]
+    }
+  },
+  "joint_tree_and_central_graph": {
+    "count": 1,
+    "joint_eligible_denominator": 14,
+    "ids": [
+      "T001"
+    ],
+    "exact_project_layout_count": "not established"
+  },
+  "note": "Categories and eligibility reproduce the supplied partial-text coding; independent recoding requires checking the cited primary papers."
+}

@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "same_inputs": true,
+  "both_runs_pass": true,
+  "workload_packet_trace_identical": true,
+  "raw_csv_identical": {
+    "agent-R1.csv": true,
+    "agent-R10.csv": true,
+    "agent-R2.csv": true,
+    "agent-R3.csv": true,
+    "agent-R4.csv": true,
+    "agent-R5.csv": true,
+    "agent-R6.csv": true,
+    "agent-R7.csv": true,
+    "agent-R8.csv": true,
+    "agent-R9.csv": true,
+    "audit-packets.csv": false,
+    "cache-limits.csv": true,
+    "client-C1.csv": true,
+    "client-C2.csv": true,
+    "client-C3.csv": true,
+    "client-M.csv": true,
+    "collector-received.csv": true,
+    "links.csv": true,
+    "nodes.csv": true,
+    "producer.csv": true
+  },
+  "first": "benign-tree-s1-r3",
+  "replay": "benign-tree-s1-r3-replay",
+  "scope": "same configuration and RNG replay; not an independent statistical run",
+  "note": "Raw audit may additionally contain local signed management commands; compare their identity separately from workload packets."
+}

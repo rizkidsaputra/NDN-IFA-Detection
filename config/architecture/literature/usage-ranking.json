@@ -1,0 +1,151 @@
+{
+  "as_of": "2026-10-16",
+  "scope": "Targeted collection; partial full-text evidence; not prevalence of all NDN",
+  "topology_denominator": 18,
+  "topology_ids": [
+    "T001",
+    "T002",
+    "T003",
+    "T004",
+    "T008",
+    "T010",
+    "T011",
+    "T012",
+    "T013",
+    "T014",
+    "T017",
+    "T018",
+    "T019",
+    "T020",
+    "T021",
+    "T022",
+    "T023",
+    "T043"
+  ],
+  "topology_multilabel": true,
+  "architecture_denominator": 15,
+  "architecture_ids": [
+    "T001",
+    "T002",
+    "T003",
+    "T004",
+    "T011",
+    "T012",
+    "T013",
+    "T014",
+    "T016",
+    "T017",
+    "T018",
+    "T019",
+    "T021",
+    "T023",
+    "T043"
+  ],
+  "architecture_mutually_exclusive_coding": true,
+  "topology": {
+    "Tree/binary tree": [
+      "T001",
+      "T002",
+      "T003",
+      "T012",
+      "T013",
+      "T022",
+      "T023"
+    ],
+    "DFN/DFN-like": [
+      "T001",
+      "T002",
+      "T003",
+      "T017",
+      "T043"
+    ],
+    "Rocketfuel ISP": [
+      "T001",
+      "T008",
+      "T010",
+      "T018"
+    ],
+    "Grid": [
+      "T004",
+      "T014",
+      "T021"
+    ],
+    "Small mesh": [
+      "T019",
+      "T020"
+    ],
+    "Rantai router dengan endpoint bercabang": [
+      "T011"
+    ],
+    "Small/SPOTIFAI; shape not explicitly restated": [
+      "T043"
+    ],
+    "Random geometric": [
+      "T014"
+    ],
+    "Scale-free": [
+      "T014"
+    ]
+  },
+  "architecture": {
+    "Local router/node; termasuk peer cooperation dan cascade router/interface": [
+      "T002",
+      "T004",
+      "T011",
+      "T012",
+      "T018",
+      "T019",
+      "T021",
+      "T023"
+    ],
+    "Role-based hierarchy or coordination (RSU/gateway/controller)": [
+      "T003",
+      "T014",
+      "T017"
+    ],
+    "Central ISP/cloud graph detection": [
+      "T001",
+      "T043"
+    ],
+    "Federated collaborative learning": [
+      "T013",
+      "T016"
+    ]
+  },
+  "architecture_evidence": {
+    "partial full text reviewed": 15,
+    "abstract only": 0
+  },
+  "monitor_denominator": 17,
+  "monitor_placement": {
+    "Router/node forwarding; tanpa batas access-edge/core khusus": [
+      "T001",
+      "T002",
+      "T004",
+      "T011",
+      "T012",
+      "T016",
+      "T017",
+      "T019",
+      "T023",
+      "T043"
+    ],
+    "Access-edge/gateway eksplisit; termasuk desain campuran": [
+      "T010",
+      "T014",
+      "T018"
+    ],
+    "Producer-adjacent router": [
+      "T008",
+      "T020"
+    ],
+    "Intermediate vehicle dalam VNDN": [
+      "T003"
+    ],
+    "Edge client; role access-router tidak ditegaskan": [
+      "T013"
+    ]
+  },
+  "monitor_scope": "Observation/feature-acquisition point, not proof of deployed agent or hosting of classifier. T010 trace-only; T008/T020 observation position, online hosting unclear.",
+  "exclusions": "Non-NDN telemetry, surveys, congestion-only T049, masters caching project T050 excluded from IFA ranking. T008/T020 hosting unspecified and T010/T022 offline-only excluded from architecture. T043 small shape not silently inferred as binary tree; DFN spelling follows paper despite inaccurate expansion. T020/T045 version relationship unresolved."
+}

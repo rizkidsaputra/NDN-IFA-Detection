@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+*.pem
+*.key
+/architecture/ndnsim/deps/
+/architecture/ndnsim/runs/
+/architecture/ndnsim/docs/*.log
+/architecture/ndnsim/docs/*resources*.txt
+/architecture/generated/

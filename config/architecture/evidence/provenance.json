@@ -1,0 +1,14 @@
+{
+  "reference_date": "2026-10-16",
+  "package_date": "2026-10-17",
+  "reference_run_id": "benign-tree-s1-r3",
+  "reference_input_sha256": {
+    "architecture/ndnsim/scenarios/benign-tree.cpp": "e3d9e9409eda1921d43e94e8ef16301046690ae8eb9292282c39170443e32ca7",
+    "architecture/ndnsim/scripts/validate_run.py": "ce7840bc1f8a98216edf8e3552754c98272860e1c80d6c18427888641a4fb732",
+    "architecture/ndnsim/config/benign-pilot.json": "6f5103f3031c3ef37bff9875c593ab1c563d066667b379556138e57a8a0c55fa"
+  },
+  "evidence_policy": "Raw CSV, FIB, config and validation copied byte-for-byte from the accepted pilot; private host access files and command/resource paths excluded.",
+  "package_script_change": "bootstrap explicitly installs python3 and GNU time; scenario, config and runtime validator unchanged.",
+  "public_pdfs_included": false,
+  "public_dependency_build_included": false
+}

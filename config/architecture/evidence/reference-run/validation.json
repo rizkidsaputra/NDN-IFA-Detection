@@ -1,0 +1,167 @@
+{
+  "status": "PASS",
+  "run_id": "benign-tree-s1-r3",
+  "checks": {
+    "topology": "PASS",
+    "effective_link_parameters": "PASS",
+    "effective_cache_disabled": "PASS",
+    "benign_C1": "PASS",
+    "consumer_cadence_C1": "PASS",
+    "benign_C2": "PASS",
+    "consumer_cadence_C2": "PASS",
+    "benign_C3": "PASS",
+    "consumer_cadence_C3": "PASS",
+    "benign_packet_paths_to_and_from_P": "PASS",
+    "producer_reply_count": "PASS",
+    "all_reports_received_once": "PASS",
+    "report_packet_paths": "PASS",
+    "agent_cadence_R1": "PASS",
+    "audit_boundaries_R1": "PASS",
+    "agent_cadence_R2": "PASS",
+    "audit_boundaries_R2": "PASS",
+    "agent_cadence_R3": "PASS",
+    "audit_boundaries_R3": "PASS",
+    "agent_cadence_R4": "PASS",
+    "audit_boundaries_R4": "PASS",
+    "agent_cadence_R5": "PASS",
+    "audit_boundaries_R5": "PASS",
+    "agent_cadence_R6": "PASS",
+    "audit_boundaries_R6": "PASS",
+    "agent_cadence_R7": "PASS",
+    "audit_boundaries_R7": "PASS",
+    "agent_cadence_R8": "PASS",
+    "audit_boundaries_R8": "PASS",
+    "agent_cadence_R9": "PASS",
+    "audit_boundaries_R9": "PASS",
+    "agent_cadence_R10": "PASS",
+    "audit_boundaries_R10": "PASS",
+    "received_payload_matches_immutable_sample": "PASS",
+    "report_timestamp_order_and_status": "PASS",
+    "counter_deltas_match_independent_packet_trace": "PASS",
+    "cache_hits_zero": "PASS",
+    "attackers_inactive": "PASS",
+    "no_workload_nacks": "PASS"
+  },
+  "details": {
+    "all_reports_received_once": {
+      "request": 130,
+      "data": 130
+    }
+  },
+  "consumers": {
+    "C1": {
+      "events": {
+        "request": 50,
+        "data": 50
+      },
+      "rate_per_active_second": 5.0,
+      "delivered_payload_bytes": 25600
+    },
+    "C2": {
+      "events": {
+        "request": 50,
+        "data": 50
+      },
+      "rate_per_active_second": 5.0,
+      "delivered_payload_bytes": 25600
+    },
+    "C3": {
+      "events": {
+        "request": 50,
+        "data": 50
+      },
+      "rate_per_active_second": 5.0,
+      "delivered_payload_bytes": 25600
+    }
+  },
+  "collector_status_counts": {
+    "on_time": 130
+  },
+  "reports": {
+    "R1": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.016492799999999974,
+      "rtt_max_s": 0.01651199999999986,
+      "window_end_to_arrival_max_s": 0.0665119999999999
+    },
+    "R2": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.016492799999999974,
+      "rtt_max_s": 0.016512000000000526,
+      "window_end_to_arrival_max_s": 0.06751200000000068
+    },
+    "R3": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.016492799999999974,
+      "rtt_max_s": 0.016512000000000526,
+      "window_end_to_arrival_max_s": 0.06851200000000013
+    },
+    "R4": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.016492799999999974,
+      "rtt_max_s": 0.016531199999999302,
+      "window_end_to_arrival_max_s": 0.06953120000000013
+    },
+    "R5": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.01236959999999998,
+      "rtt_max_s": 0.012398400000000365,
+      "window_end_to_arrival_max_s": 0.06639840000000063
+    },
+    "R6": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.012369599999999537,
+      "rtt_max_s": 0.012384000000000839,
+      "window_end_to_arrival_max_s": 0.06738400000000055
+    },
+    "R7": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.01236959999999998,
+      "rtt_max_s": 0.012398400000000365,
+      "window_end_to_arrival_max_s": 0.06839839999999953
+    },
+    "R8": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.008246399999999987,
+      "rtt_max_s": 0.008265599999999651,
+      "window_end_to_arrival_max_s": 0.06526560000000003
+    },
+    "R9": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.008246399999999987,
+      "rtt_max_s": 0.008265599999999651,
+      "window_end_to_arrival_max_s": 0.06626559999999948
+    },
+    "R10": {
+      "received": 13,
+      "sample_cadence_s": 1,
+      "rtt_min_s": 0.0041303999999997565,
+      "rtt_max_s": 0.004135200000000339,
+      "window_end_to_arrival_max_s": 0.06313519999999961
+    }
+  },
+  "report_counter_fields_in_order": [
+    "in_interests",
+    "out_interests",
+    "in_data",
+    "out_data",
+    "in_nacks",
+    "out_nacks",
+    "satisfied_interests",
+    "unsatisfied_interests",
+    "cs_hits",
+    "cs_misses"
+  ],
+  "report_network_transmission_bytes_ndn_layer": 54861,
+  "pit_field": "final payload field; instantaneous entries at window end, not a rate",
+  "scope": "benign pilot only; no flooding, report impairment, final dataset or ML"
+}

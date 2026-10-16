@@ -1,0 +1,283 @@
+{
+  "status": "PASS",
+  "evidence_type": "static equal-hop graph analysis, not simulation",
+  "config_sha256": "6f5103f3031c3ef37bff9875c593ab1c563d066667b379556138e57a8a0c55fa",
+  "nodes": 17,
+  "links": 16,
+  "connected": true,
+  "acyclic": true,
+  "router_diameter_edges": 6,
+  "collector_placement_candidates": {
+    "R1": {
+      "sum_hops": 40,
+      "mean_hops": 4.0,
+      "max_hops": 7,
+      "per_router_hops": {
+        "R1": 1,
+        "R2": 3,
+        "R3": 5,
+        "R4": 7,
+        "R5": 2,
+        "R6": 4,
+        "R7": 6,
+        "R8": 3,
+        "R9": 5,
+        "R10": 4
+      }
+    },
+    "R2": {
+      "sum_hops": 40,
+      "mean_hops": 4.0,
+      "max_hops": 7,
+      "per_router_hops": {
+        "R1": 3,
+        "R2": 1,
+        "R3": 5,
+        "R4": 7,
+        "R5": 2,
+        "R6": 4,
+        "R7": 6,
+        "R8": 3,
+        "R9": 5,
+        "R10": 4
+      }
+    },
+    "R3": {
+      "sum_hops": 42,
+      "mean_hops": 4.2,
+      "max_hops": 7,
+      "per_router_hops": {
+        "R1": 5,
+        "R2": 5,
+        "R3": 1,
+        "R4": 7,
+        "R5": 4,
+        "R6": 2,
+        "R7": 6,
+        "R8": 3,
+        "R9": 5,
+        "R10": 4
+      }
+    },
+    "R4": {
+      "sum_hops": 48,
+      "mean_hops": 4.8,
+      "max_hops": 7,
+      "per_router_hops": {
+        "R1": 7,
+        "R2": 7,
+        "R3": 7,
+        "R4": 1,
+        "R5": 6,
+        "R6": 6,
+        "R7": 2,
+        "R8": 5,
+        "R9": 3,
+        "R10": 4
+      }
+    },
+    "R5": {
+      "sum_hops": 32,
+      "mean_hops": 3.2,
+      "max_hops": 6,
+      "per_router_hops": {
+        "R1": 2,
+        "R2": 2,
+        "R3": 4,
+        "R4": 6,
+        "R5": 1,
+        "R6": 3,
+        "R7": 5,
+        "R8": 2,
+        "R9": 4,
+        "R10": 3
+      }
+    },
+    "R6": {
+      "sum_hops": 34,
+      "mean_hops": 3.4,
+      "max_hops": 6,
+      "per_router_hops": {
+        "R1": 4,
+        "R2": 4,
+        "R3": 2,
+        "R4": 6,
+        "R5": 3,
+        "R6": 1,
+        "R7": 5,
+        "R8": 2,
+        "R9": 4,
+        "R10": 3
+      }
+    },
+    "R7": {
+      "sum_hops": 40,
+      "mean_hops": 4.0,
+      "max_hops": 6,
+      "per_router_hops": {
+        "R1": 6,
+        "R2": 6,
+        "R3": 6,
+        "R4": 2,
+        "R5": 5,
+        "R6": 5,
+        "R7": 1,
+        "R8": 4,
+        "R9": 2,
+        "R10": 3
+      }
+    },
+    "R8": {
+      "sum_hops": 28,
+      "mean_hops": 2.8,
+      "max_hops": 5,
+      "per_router_hops": {
+        "R1": 3,
+        "R2": 3,
+        "R3": 3,
+        "R4": 5,
+        "R5": 2,
+        "R6": 2,
+        "R7": 4,
+        "R8": 1,
+        "R9": 3,
+        "R10": 2
+      }
+    },
+    "R9": {
+      "sum_hops": 34,
+      "mean_hops": 3.4,
+      "max_hops": 5,
+      "per_router_hops": {
+        "R1": 5,
+        "R2": 5,
+        "R3": 5,
+        "R4": 3,
+        "R5": 4,
+        "R6": 4,
+        "R7": 2,
+        "R8": 3,
+        "R9": 1,
+        "R10": 2
+      }
+    },
+    "R10": {
+      "sum_hops": 30,
+      "mean_hops": 3.0,
+      "max_hops": 4,
+      "per_router_hops": {
+        "R1": 4,
+        "R2": 4,
+        "R3": 4,
+        "R4": 4,
+        "R5": 3,
+        "R6": 3,
+        "R7": 3,
+        "R8": 2,
+        "R9": 2,
+        "R10": 1
+      }
+    }
+  },
+  "minimum_sum_hop_placements": [
+    "R8"
+  ],
+  "minimum_max_hop_placements": [
+    "R10"
+  ],
+  "report_data_paths": {
+    "R1": [
+      "R1",
+      "R5",
+      "R8",
+      "R10",
+      "M"
+    ],
+    "R2": [
+      "R2",
+      "R5",
+      "R8",
+      "R10",
+      "M"
+    ],
+    "R3": [
+      "R3",
+      "R6",
+      "R8",
+      "R10",
+      "M"
+    ],
+    "R4": [
+      "R4",
+      "R7",
+      "R9",
+      "R10",
+      "M"
+    ],
+    "R5": [
+      "R5",
+      "R8",
+      "R10",
+      "M"
+    ],
+    "R6": [
+      "R6",
+      "R8",
+      "R10",
+      "M"
+    ],
+    "R7": [
+      "R7",
+      "R9",
+      "R10",
+      "M"
+    ],
+    "R8": [
+      "R8",
+      "R10",
+      "M"
+    ],
+    "R9": [
+      "R9",
+      "R10",
+      "M"
+    ],
+    "R10": [
+      "R10",
+      "M"
+    ]
+  },
+  "report_data_crossing_R8_to_R10": [
+    "R1",
+    "R2",
+    "R3",
+    "R5",
+    "R6",
+    "R8"
+  ],
+  "hypothetical_attack_interest_paths_if_target_P": {
+    "A1": [
+      "A1",
+      "R1",
+      "R5",
+      "R8",
+      "R10",
+      "R9",
+      "R7",
+      "R4",
+      "P"
+    ],
+    "A2": [
+      "A2",
+      "R3",
+      "R6",
+      "R8",
+      "R10",
+      "R9",
+      "R7",
+      "R4",
+      "P"
+    ]
+  },
+  "note": "A1/A2 applications are inactive. No queue, traffic, congestion, PIT or inference model is used here."
+}

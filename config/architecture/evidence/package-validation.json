@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "date": "2026-10-17",
+  "manifest_files": 59,
+  "portable_local_links": 35,
+  "private_access_pattern_scan": "PASS",
+  "reference_input_hashes": "PASS",
+  "reference_evidence_unchanged": true,
+  "reference_runtime_checks_recomputed": 39,
+  "consumer_data_counts": {
+    "C1": 50,
+    "C2": 50,
+    "C3": 50
+  },
+  "report_status": {
+    "on_time": 130
+  },
+  "topology_nodes": 17,
+  "topology_links": 16,
+  "literature_tree": "7/18",
+  "literature_central_graph": "2/15",
+  "joint_coded_studies": [
+    "T001"
+  ],
+  "clean_second_stack_build_performed": false,
+  "note": "Offline distribution checks; does not claim a new simulation, ML evaluation or successful fresh installation on another OS."
+}
