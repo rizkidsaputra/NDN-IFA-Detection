@@ -1,5 +1,7 @@
 # 3. Panduan reproduksi untuk kolaborator
 
+Bagian ini mencatat pilot benign awal. Untuk langkah lab dan IFA terbaru, baca [panduan utama](../LAB_GUIDE.md) serta [hasil IFA dan scheduler](ndnsim/ifa-pilot/docs/RESULTS.md).
+
 ## 3.1 Apa yang akan direproduksi?
 
 Targetnya adalah tree benign dan transport report dasar yang telah diuji, bukan keseluruhan penelitian ML. Keberhasilan berarti konfigurasi berjalan, tiga consumer menerima Data, setiap router melapor melalui jaringan, dan validator mengonfirmasi count, jalur, cadence, timestamp serta delta counter. Model deteksi tidak perlu diinstal pada tahap ini.

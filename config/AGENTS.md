@@ -4,7 +4,7 @@ Read `PROJECT_CONTEXT.md` first, then `architecture/README.md`. These files are 
 
 ## Scope and evidence
 
-- The verified implementation is the benign ndnSIM pilot plus router measurement agents and a pull collector. GraphSAGE+GRU, attack workloads, report impairments, final datasets and ML evaluation are not implemented or verified here.
+- The verified implementation includes the benign pilot, router agents, pull collector, IFA mechanism and benign-burst controls. The pinned ndn-cxx adapter requires the documented single-wakeup scheduler patch. Twelve conditions passed on Mint; old capped attempts remain historical incomplete evidence. GraphSAGE+GRU, report impairments, final datasets and ML evaluation are not implemented.
 - R1 through R10 are all forwarding routers. M/P/C1/C2/C3/A1/A2 are separate endpoint nodes. Do not add R5-R6 or substitute historical seven-router illustrations.
 - Do not reuse old implementations or datasets as current results. This package does not require access to the author's workstation or archived project.
 - Collector features must come only from report Data packets that have arrived. Direct NFD/trace access is for agents or independent audit, never a collector shortcut.
@@ -14,7 +14,7 @@ Read `PROJECT_CONTEXT.md` first, then `architecture/README.md`. These files are 
 
 ## Implementation and verification
 
-- Use the pinned ns-3/ndnSIM/submodule commits and supplied include-only compatibility patches. Do not silently change simulator platform.
+- Use the pinned commits, include-only compatibility patches and the explicit functional single-wakeup scheduler patch. Do not silently change simulator platform or claim the functional patch is include-only.
 - Do not edit `architecture/evidence/reference-run/` to make checks pass. Validate a temporary copy or create a new run under the ignored runtime directory.
 - Never overwrite a completed run. Mark interrupted runs and repeat with a new output label; resume is not implemented.
 - Run `python architecture/scripts/verify_package.py` after changing the package. If intentionally changing source/docs, refresh `architecture/evidence/package-sha256.json` with `--write-manifest` and then verify again. A regenerated hash is not proof that altered simulator behavior was tested.

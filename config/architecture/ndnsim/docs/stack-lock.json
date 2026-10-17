@@ -1,15 +1,49 @@
 {
   "reference_date": "2026-10-16",
   "platform_verified": "Linux Mint 22.2 Zara (Ubuntu noble), x86_64",
-  "toolchain_reference": {"gcc":"13.3.0","python":"3.12.3","boost":"1.83.0","openssl":"3.0.13","sqlite":"3.45.1"},
-  "build": {"profile":"optimized","jobs":2,"python_bindings":false,"example_target":"ndn-simple","scenario_target":"benign-tree"},
-  "repositories": {
-    "ns-3": {"url":"https://github.com/named-data-ndnSIM/ns-3-dev.git","commit":"1b3bab9b6dba5f1e616c0b286eb889e9ce3d5d59","version":"ns-3.35 ndnSIM branch","patch":"ns3-compatibility.patch"},
-    "ndnSIM": {"url":"https://github.com/named-data-ndnSIM/ndnSIM.git","commit":"90d50396654dabad54b6979f2dc8fa929ade544c","tag":"ndnSIM-2.9-NFD-22.02"},
-    "NFD": {"url":"https://github.com/named-data-ndnSIM/NFD","commit":"361b381b9b552ff3341aa160858bea1d470d2122"},
-    "ndn-cxx": {"url":"https://github.com/named-data-ndnSIM/ndn-cxx","commit":"2b51e5796415b5d41fe268b35250b9453f16d3d6","patch":"ndn-cxx-compatibility.patch"},
-    "websocketpp": {"url":"https://github.com/cawka/websocketpp.git","commit":"ac4e021333675fc80b96eb7be45d218581c897e2"}
+  "toolchain_reference": {
+    "gcc": "13.3.0",
+    "python": "3.12.3",
+    "boost": "1.83.0",
+    "openssl": "3.0.13",
+    "sqlite": "3.45.1"
   },
-  "patch_scope":"Only explicit cstdint/optional includes; no forwarding algorithm patch.",
-  "fresh_checkout_note":"The reference stack was built successfully. This public bootstrap script has not been independently rebuilt on every target OS."
+  "build": {
+    "profile": "optimized",
+    "jobs": 1,
+    "python_bindings": false,
+    "example_target": "ndn-simple",
+    "scenario_target": "benign-tree"
+  },
+  "repositories": {
+    "ns-3": {
+      "url": "https://github.com/named-data-ndnSIM/ns-3-dev.git",
+      "commit": "1b3bab9b6dba5f1e616c0b286eb889e9ce3d5d59",
+      "version": "ns-3.35 ndnSIM branch",
+      "patch": "ns3-compatibility.patch"
+    },
+    "ndnSIM": {
+      "url": "https://github.com/named-data-ndnSIM/ndnSIM.git",
+      "commit": "90d50396654dabad54b6979f2dc8fa929ade544c",
+      "tag": "ndnSIM-2.9-NFD-22.02"
+    },
+    "NFD": {
+      "url": "https://github.com/named-data-ndnSIM/NFD",
+      "commit": "361b381b9b552ff3341aa160858bea1d470d2122"
+    },
+    "ndn-cxx": {
+      "url": "https://github.com/named-data-ndnSIM/ndn-cxx",
+      "commit": "2b51e5796415b5d41fe268b35250b9453f16d3d6",
+      "patch": "ndn-cxx-compatibility.patch"
+    },
+    "websocketpp": {
+      "url": "https://github.com/cawka/websocketpp.git",
+      "commit": "ac4e021333675fc80b96eb7be45d218581c897e2"
+    }
+  },
+  "patch_scope": "Two explicit cstdint/optional include patches plus a functional single-wakeup fix in the pinned ndn-cxx scheduler adapter. No traffic/link/PIT-capacity change.",
+  "fresh_checkout_note": "The reference stack was built successfully. This public bootstrap script has not been independently rebuilt on every target OS.",
+  "functional_patch": "ifa-pilot/docs/ndn-cxx-scheduler-single-wakeup.patch",
+  "functional_patch_sha256": "a984e004774d8d92541b060465556303f50f4c82cfa442020d2e807bf5686943",
+  "reference_original_build_jobs": 2
 }

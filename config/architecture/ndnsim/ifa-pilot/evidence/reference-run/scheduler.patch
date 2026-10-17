@@ -1,0 +1,19 @@
+diff --git a/ndn-cxx/util/scheduler.cpp b/ndn-cxx/util/scheduler.cpp
+--- a/ndn-cxx/util/scheduler.cpp
++++ b/ndn-cxx/util/scheduler.cpp
+@@ -143,6 +143,15 @@ void
+ Scheduler::scheduleNext()
+ {
++  // Replace the previous ns-3 wakeup, including when an earlier event is inserted.
++  // Assigning another EventId alone does not cancel the old simulator event.
++  if (m_timerEvent) {
++    if (!m_timerEvent->IsExpired()) {
++      ns3::Simulator::Remove(*m_timerEvent);
++    }
++    m_timerEvent.reset();
++  }
++
+   if (!m_queue.empty()) {
+     m_timerEvent = ns3::Simulator::Schedule(ns3::NanoSeconds((*m_queue.begin())->expiresFromNow().count()),
+                                             &Scheduler::executeEvent, this);
+   }

@@ -3,3 +3,6 @@
 *.zip binary
 # Unified patch context includes intentional single-space blank lines.
 *.patch whitespace=-blank-at-eol
+# Preserve exact run input/evidence bytes across Windows and Linux checkouts.
+architecture/ndnsim/ifa-pilot/evidence/reference-run/** -text whitespace=cr-at-eol,-blank-at-eol
+architecture/ndnsim/ifa-pilot/config/*.json -text whitespace=cr-at-eol

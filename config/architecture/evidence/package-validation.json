@@ -1,8 +1,8 @@
 {
   "status": "PASS",
   "date": "2026-10-17",
-  "manifest_files": 59,
-  "portable_local_links": 35,
+  "manifest_files": 116,
+  "portable_local_links": 40,
   "private_access_pattern_scan": "PASS",
   "reference_input_hashes": "PASS",
   "reference_evidence_unchanged": true,
@@ -23,5 +23,15 @@
     "T001"
   ],
   "clean_second_stack_build_performed": false,
+  "ifa_reference": {
+    "status": "PASS",
+    "reference_files": 30,
+    "ifa_reference_checks": 46,
+    "attack_sink_received": 250,
+    "report_on_time": 280,
+    "reference_unchanged": true,
+    "scheduler_summary_conditions": 12,
+    "scope": "Offline audit of included raw IFA reference; high-load summaries are not independent reruns."
+  },
   "note": "Offline distribution checks; does not claim a new simulation, ML evaluation or successful fresh installation on another OS."
 }

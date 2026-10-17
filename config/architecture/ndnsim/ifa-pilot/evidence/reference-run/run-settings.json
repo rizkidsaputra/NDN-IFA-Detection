@@ -1,0 +1,6 @@
+{
+  "build_jobs": 1,
+  "machine_timeout_s": 180,
+  "scheduler_patch": "single-wakeup",
+  "ndn_cxx_commit": "2b51e5796415b5d41fe268b35250b9453f16d3d6"
+}

@@ -1,6 +1,6 @@
 # Arsitektur dan reproduksi penelitian
 
-Folder ini berisi dokumentasi metode, implementasi pilot, dan bukti agar kolaborator dapat membangun ulang tahap yang sudah diuji. Baca [konteks proyek](../PROJECT_CONTEXT.md) terlebih dahulu.
+Folder ini berisi dokumentasi metode, implementasi pilot, dan bukti agar kolaborator dapat membangun ulang tahap yang sudah diuji. Untuk membuat lab, mulai dari [panduan utama](../LAB_GUIDE.md).
 
 ## Urutan baca
 
@@ -40,7 +40,8 @@ architecture/
 | Agent seluruh router dan collector pull | Diimplementasikan, divalidasi |
 | Audit jalur, cadence, timestamp dan counter | Diimplementasikan, divalidasi |
 | GraphSAGE+GRU, mask/age, state keputusan kausal | Rancangan, belum diimplementasikan |
-| Flooding dan gangguan report | Belum dijalankan |
+| Mekanisme IFA dan kontrol benign burst | Diuji; lihat [hasil terbaru](ndnsim/ifa-pilot/docs/RESULTS.md) |
+| Gangguan report buatan | Belum diimplementasikan |
 | Dataset final dan evaluasi ML | Belum tersedia |
 
 Paket publik tidak menyertakan PDF berhak cipta, salinan dependency/build, kredensial atau informasi akses mesin penulis. [Bibliografi](literature/REFERENCES.md) mengarahkan pembaca ke DOI dan sumber primer. Lisensi dependency mengikuti upstream masing-masing; lisensi menyeluruh untuk karya asli proyek belum ditetapkan.

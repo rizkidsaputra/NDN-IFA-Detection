@@ -1,0 +1,18 @@
+name,node_id,role
+R1,0,router
+R2,1,router
+R3,2,router
+R4,3,router
+R5,4,router
+R6,5,router
+R7,6,router
+R8,7,router
+R9,8,router
+R10,9,router
+M,10,collector
+P,11,producer
+C1,12,consumer
+C2,13,consumer
+C3,14,consumer
+A1,15,inactive attacker
+A2,16,inactive attacker

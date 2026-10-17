@@ -14,7 +14,8 @@ git -C deps/ns-3/src/ndnSIM checkout --detach 90d50396654dabad54b6979f2dc8fa929a
 git -C deps/ns-3/src/ndnSIM submodule update --init --recursive
 git -C deps/ns-3 apply "$root/docs/ns3-compatibility.patch"
 git -C deps/ns-3/src/ndnSIM/ndn-cxx apply "$root/docs/ndn-cxx-compatibility.patch"
+bash "$root/ifa-pilot/scripts/apply_scheduler_fix.sh"
 cd deps/ns-3
 ./waf configure --disable-python --enable-examples --enable-modules=ndnSIM,point-to-point -d optimized
-./waf -j2 --targets=ndn-simple
-./waf -j2 --targets=ndn-simple --run=ndn-simple
+./waf -j1 --targets=ndn-simple
+./waf -j1 --targets=ndn-simple --run=ndn-simple

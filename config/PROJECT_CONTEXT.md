@@ -11,7 +11,7 @@ Pertanyaan ini belum merupakan gap universal yang terbukti. Ketahanan terhadap r
 ## 2. Yang sudah diimplementasikan
 
 - Platform: ndnSIM pada Linux Mint 22.2, dengan ns-3.35 khusus ndnSIM dan commit dependency terpin.
-- Topologi: sepuluh router R1-R10, masing-masing dengan agent; collector M terhubung ke R10; producer P ke R4; C1/C2/C3 ke R1/R2/R3; A1/A2 ke R1/R3 sebagai endpoint tanpa aplikasi aktif.
+- Topologi: sepuluh router R1-R10, masing-masing dengan agent; collector M terhubung ke R10; producer P ke R4; C1/C2/C3 ke R1/R2/R3; A1/A2 ke R1/R3 sebagai endpoint; pilot benign menonaktifkan keduanya, pilot IFA mengaktifkan A1.
 - Sembilan link router: R10-R8, R10-R9, R8-R5, R8-R6, R5-R1, R5-R2, R6-R3, R9-R7, R7-R4. Tujuh link endpoint membuat total 17 node dan 16 link.
 - Agent mengambil 10 delta counter NFD agregat router dan satu PIT snapshot. Ini belum fitur per-interface GNN4IFA.
 - M meminta `/report/<runId>/<router>/<sequence>`; agent persisten membalas Data berisi sample immutable. Collector mengambil fitur hanya dari payload OnData yang benar-benar diterima.
@@ -47,7 +47,7 @@ Model kerja adalah GraphSAGE+GRU, modifikasi terinspirasi GNN4IFA. Sepuluh route
 
 Pada deadline keputusan, hanya report yang sudah diterima boleh digunakan. Node fisik tidak dihapus ketika report missing. Mask menunjukkan availability window target; age berasal dari sample terakhir yang benar-benar diterima. No-history harus eksplisit. Report lama tidak boleh menimpa sample lebih baru atau merevisi keputusan historis. Detail kontrak berada di `architecture/04-kontrak-detektor.md`.
 
-Belum ada arsitektur layer/hyperparameter final, checkpoint, training, serangan, impairment, classifier online, alarm atau integrasi admin. Jangan mengarang command training yang belum ada.
+Belum ada arsitektur layer/hyperparameter final, checkpoint, training, impairment report, classifier online, alarm atau integrasi admin. Mekanisme IFA sudah diuji pada pilot terpisah. Jangan mengarang command training yang belum ada.
 
 ## 6. Dasar desain dan batas literatur
 
@@ -65,6 +65,16 @@ Pisahkan train/validation/test per run sebelum membuat window. Normalisasi dan t
 
 ## 8. Langkah berikutnya dan aturan perubahan
 
-Paket ini cukup untuk mereproduksi plumbing benign/report. Tahap berikutnya memerlukan tugas eksplisit: tinjau feature contract dan scope klaim, validasi mekanisme IFA tanpa ML, lalu bekukan protokol dan kumpulkan run independen. Jangan otomatis mengaktifkan attacker hanya karena membaca konteks ini. Jangan beralih platform atau menyalin konfigurasi historis tanpa alasan yang dibahas.
+Paket ini mereproduksi benign/report dan pilot mekanisme IFA tanpa ML. Langkah berikutnya: tinjau fitur, label, scope klaim dan variasi workload independen sebelum protokol dataset final. Detail konfigurasi pilot ada di `architecture/ndnsim/ifa-pilot/docs/PROTOKOL_PILOT.md`. Jangan otomatis mengaktifkan attacker hanya karena membaca konteks ini. Jangan beralih platform atau menyalin konfigurasi historis tanpa alasan yang dibahas.
 
 Setiap kolaborator mencatat perubahan, commit, seed, command, checksum input, log dan hasil aktual. Run debugging/replay bukan dataset final atau replikasi statistik independen. Tidak diperlukan akses ke mesin penulis; lokasi workspace dipilih masing-masing pengguna mengikuti panduan reproduksi.
+
+## 9. Pilot IFA dan scheduler, pembaruan 17 Oktober 2026
+
+Source IFA berada di `architecture/ndnsim/ifa-pilot/`. Dua kontrol burst panjang awalnya terhenti karena batas mesin 180 s. Profil dan uji regresi menemukan wakeup scheduler ndn-cxx yang tidak dibatalkan saat diganti. Patch fungsional single-wakeup disertakan; bukan perubahan trafik, link, PIT admission atau biaya CPU router. Commit ndn-cxx tetap terpin.
+
+Dengan patch, seluruh 12 kondisi selesai pada Mint: baseline; IFA 50/500/2000/5000/12000 per detik, IFA 500/s lifetime 4 s; burst sah 500/2000/3000/5000 per detik; serta burst pendek 5000/s. Semua report 280/280 on-time. Burst 3000/s dan 5000/s menurunkan delivery normal menjadi 292/345 dan 286/345, masing-masing dengan 4316/14321 queue drop. Semua IFA yang diuji tetap menerima 345/345 Data normal; peak PIT R1 maksimum 12001. Tidak ada detector/ML atau bukti IFA menyebabkan report loss.
+
+Uji callback/timing/context serta event-count PASS setelah patch. Sepuluh kondisi yang sebelumnya selesai memiliki CSV aplikasi/report/PIT/drop dan trace workload identik sebelum/sesudah patch; raw command manajemen bertanda tangan dikecualikan. Pilot normal asli juga kembali PASS 39 pemeriksaan. Run lama tidak ditimpa. Detail, hash dan batas bukti: `architecture/ndnsim/ifa-pilot/docs/RESULTS.md` dan evidence ringkasnya. Bukti raw publik untuk IFA ringan saja; kondisi besar tetap pada workspace eksperimen.
+
+Panduan utama untuk manusia adalah `LAB_GUIDE.md`, bukan dokumen konteks ini. Ubuntu 24.04/Mint dan VM dijelaskan untuk kolaborator; minimum praktis RAM Linux 4 GB/CPU 2/disk 40 GB merupakan rekomendasi, bukan benchmark minimum atau bukti reproduksi Ubuntu/VM. Bootstrap/runner memakai satu pekerjaan build. Tidak ada training ML atau dataset final pada tahap publikasi ini.

@@ -9,3 +9,6 @@ __pycache__/
 /architecture/ndnsim/docs/*.log
 /architecture/ndnsim/docs/*resources*.txt
 /architecture/generated/
+
+/architecture/ndnsim/ifa-pilot/runs/
+/architecture/ndnsim/ifa-pilot/docs/*.log

@@ -1,5 +1,7 @@
 # 5. Bukti validasi dan batas klaim
 
+Bagian ini mencatat pilot benign awal. Untuk langkah lab dan IFA terbaru, baca [panduan utama](../LAB_GUIDE.md) serta [hasil IFA dan scheduler](ndnsim/ifa-pilot/docs/RESULTS.md).
+
 ## 5.1 Status penerimaan
 
 Pilot `benign-tree-s1-r3` pada Mint tanggal 16 Oktober 2026 lulus **39 pemeriksaan**. Replay dengan seed, RNG run, source dan config sama juga lulus. Audit ulang di Windows tanggal 17 Oktober mengonfirmasi hasil yang sama. Paket ini menyertakan raw evidence satu run penerimaan serta ringkasan replay; ia bukan dataset final.

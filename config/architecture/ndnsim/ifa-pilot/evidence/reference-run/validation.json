@@ -1,0 +1,249 @@
+{
+  "status": "PASS",
+  "run_id": "ifa-atk1-00050-s1",
+  "checks": {
+    "topology_17_nodes_16_links_tree": "PASS",
+    "link_parameters_unchanged": "PASS",
+    "cache_disabled": "PASS",
+    "client-C1.csv_requests": "PASS",
+    "client-C1.csv_terminal_events": "PASS",
+    "client-C2.csv_requests": "PASS",
+    "client-C2.csv_terminal_events": "PASS",
+    "client-C3.csv_requests": "PASS",
+    "client-C3.csv_terminal_events": "PASS",
+    "flow-A1.csv_requests": "PASS",
+    "flow-A1.csv_terminal_events": "PASS",
+    "collector_request_names_and_cadence": "PASS",
+    "collector_terminal_events": "PASS",
+    "agent_R1_cadence": "PASS",
+    "agent_R2_cadence": "PASS",
+    "agent_R3_cadence": "PASS",
+    "agent_R4_cadence": "PASS",
+    "agent_R5_cadence": "PASS",
+    "agent_R6_cadence": "PASS",
+    "agent_R7_cadence": "PASS",
+    "agent_R8_cadence": "PASS",
+    "agent_R9_cadence": "PASS",
+    "agent_R10_cadence": "PASS",
+    "all_workload_names_known": "PASS",
+    "packet_paths_valid_order_and_faces": "PASS",
+    "no_NoRoute_on_routed_workload": "PASS",
+    "six_counter_deltas_match_full_face_audit": "PASS",
+    "audit_sampling_boundaries": "PASS",
+    "no_cache_hits": "PASS",
+    "delivered_packets_match_full_paths_and_P_replies": "PASS",
+    "attack_sink_receipts_match_full_Interest_path": "PASS",
+    "attack_unique_names_no_Data": "PASS",
+    "attacker_activation_matches_config": "PASS",
+    "report_payload_and_arrival_only_contract": "PASS",
+    "PIT_probe_R1_cadence": "PASS",
+    "PIT_probe_R2_cadence": "PASS",
+    "PIT_probe_R3_cadence": "PASS",
+    "PIT_probe_R4_cadence": "PASS",
+    "PIT_probe_R5_cadence": "PASS",
+    "PIT_probe_R6_cadence": "PASS",
+    "PIT_probe_R7_cadence": "PASS",
+    "PIT_probe_R8_cadence": "PASS",
+    "PIT_probe_R9_cadence": "PASS",
+    "PIT_probe_R10_cadence": "PASS",
+    "PIT_probe_P_cadence": "PASS",
+    "queue_drop_records_valid": "PASS"
+  },
+  "details": {
+    "all_workload_names_known": 0,
+    "packet_paths_valid_order_and_faces": [],
+    "no_NoRoute_on_routed_workload": {}
+  },
+  "metrics": {
+    "benign_requests": 345,
+    "benign_data": 345,
+    "benign_timeouts": 0,
+    "benign_rtt_max_s": 0.03709760000000095,
+    "report_requests": 280,
+    "report_received": 280,
+    "report_status_counts": {
+      "on_time": 280
+    },
+    "report_missing": 0,
+    "report_timeouts": 0,
+    "report_window_to_arrival_max_s": 0.06953440000000022,
+    "attack_requests": 250,
+    "attack_sink_received": 250,
+    "attack_timeouts": 250,
+    "queue_drops": 0,
+    "queue_drops_by_direction": {},
+    "pit_by_node": {
+      "R1": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      },
+      "R2": {
+        "peak_entries": 1,
+        "final_entries": 1,
+        "peak_during_attack_window": 1
+      },
+      "R3": {
+        "peak_entries": 1,
+        "final_entries": 1,
+        "peak_during_attack_window": 1
+      },
+      "R4": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      },
+      "R5": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      },
+      "R6": {
+        "peak_entries": 1,
+        "final_entries": 1,
+        "peak_during_attack_window": 1
+      },
+      "R7": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      },
+      "R8": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      },
+      "R9": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      },
+      "R10": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      },
+      "P": {
+        "peak_entries": 51,
+        "final_entries": 1,
+        "peak_during_attack_window": 51
+      }
+    },
+    "network_transmission_bytes_ndn": {
+      "report": 120238,
+      "benign": 1717056,
+      "attack": 97136
+    },
+    "nack_trace_counts_by_family_reason": {}
+  },
+  "flows": {
+    "client-C1.csv": {
+      "events": {
+        "request": 115,
+        "data": 115
+      },
+      "actual_rate_hz": 5.0,
+      "rtt_max_s": 0.03709760000000095,
+      "by_request_phase": {
+        "before": {
+          "requests": 15,
+          "data": 15,
+          "rtt_max_s": 0.03612160000000042
+        },
+        "during": {
+          "requests": 25,
+          "data": 25,
+          "rtt_max_s": 0.03709760000000095
+        },
+        "after": {
+          "requests": 75,
+          "data": 75,
+          "rtt_max_s": 0.036134400000001676
+        }
+      }
+    },
+    "client-C2.csv": {
+      "events": {
+        "request": 115,
+        "data": 115
+      },
+      "actual_rate_hz": 5.0,
+      "rtt_max_s": 0.03707040000000106,
+      "by_request_phase": {
+        "before": {
+          "requests": 15,
+          "data": 15,
+          "rtt_max_s": 0.037056000000000644
+        },
+        "during": {
+          "requests": 25,
+          "data": 25,
+          "rtt_max_s": 0.03663039999999995
+        },
+        "after": {
+          "requests": 75,
+          "data": 75,
+          "rtt_max_s": 0.03707040000000106
+        }
+      }
+    },
+    "client-C3.csv": {
+      "events": {
+        "request": 115,
+        "data": 115
+      },
+      "actual_rate_hz": 5.0,
+      "rtt_max_s": 0.036602400000003144,
+      "by_request_phase": {
+        "before": {
+          "requests": 15,
+          "data": 15,
+          "rtt_max_s": 0.03658880000000053
+        },
+        "during": {
+          "requests": 25,
+          "data": 25,
+          "rtt_max_s": 0.03616320000000073
+        },
+        "after": {
+          "requests": 75,
+          "data": 75,
+          "rtt_max_s": 0.036602400000003144
+        }
+      }
+    },
+    "flow-A1.csv": {
+      "events": {
+        "request": 250,
+        "timeout": 250
+      },
+      "actual_rate_hz": 50.0,
+      "rtt_max_s": null,
+      "by_request_phase": {
+        "before": {
+          "requests": 0,
+          "data": 0,
+          "rtt_max_s": null
+        },
+        "during": {
+          "requests": 250,
+          "data": 0,
+          "rtt_max_s": null
+        },
+        "after": {
+          "requests": 0,
+          "data": 0,
+          "rtt_max_s": null
+        }
+      }
+    }
+  },
+  "scope": "controlled mechanism pilot, no detector/ML; PASS validates integrity, not absence of service impact",
+  "limitations": [
+    "PIT has no configured finite admission capacity; no CPU/processing bottleneck model.",
+    "PIT probe is an offline audit snapshot every 100 ms, not detector input.",
+    "Sampling/agent processing instant at simulator event; fixed CBR requests; seeds only change nonces.",
+    "Queue trace records actual packet drops, not application-specific loss attribution.",
+    "Late/missing report is descriptive; no impairment or mitigation injected."
+  ]
+}

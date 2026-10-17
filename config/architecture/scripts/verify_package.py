@@ -28,9 +28,11 @@ def files():
         rel=f.relative_to(ROOT)
         if any(part in ['__pycache__','.git'] for part in rel.parts): continue
         if any(str(rel).replace('\\','/').startswith(p) for p in
-               ['architecture/ndnsim/deps/','architecture/ndnsim/runs/','architecture/generated/']): continue
+               ['architecture/ndnsim/deps/','architecture/ndnsim/runs/',
+                'architecture/ndnsim/ifa-pilot/runs/','architecture/generated/']): continue
         if rel.suffix=='.pyc': continue
         if str(rel).replace('\\','/').startswith('architecture/ndnsim/docs/') and (rel.suffix=='.log' or ('resources' in rel.name and rel.suffix=='.txt')): continue
+        if str(rel).replace('\\','/').startswith('architecture/ndnsim/ifa-pilot/docs/') and rel.suffix=='.log': continue
         result.append(f)
     return sorted(result)
 
@@ -71,6 +73,8 @@ def verify(write_manifest=False):
     lock=json.loads((ARCH/'ndnsim/docs/stack-lock.json').read_text(encoding='utf-8'))
     bootstrap=(ARCH/'ndnsim/scripts/bootstrap_mint.sh').read_text(encoding='utf-8')
     assert all(lock['repositories'][r]['commit'] in bootstrap for r in ['ns-3','ndnSIM'])
+    assert digest(ARCH/'ndnsim'/lock['functional_patch'])==lock['functional_patch_sha256']
+    assert 'apply_scheduler_fix.sh' in bootstrap
     ref=ARCH/'evidence/reference-run'
     original={f.name:digest(f) for f in ref.iterdir() if f.is_file()}
     with tempfile.TemporaryDirectory(prefix='ndn-ifa-reference-') as temporary:
@@ -85,6 +89,10 @@ def verify(write_manifest=False):
     assert original=={f.name:digest(f) for f in ref.iterdir() if f.is_file()}, 'Reference evidence modified'
     replay=json.loads((ARCH/'evidence/replay-validation.json').read_text(encoding='utf-8'))
     assert replay['status']=='PASS' and replay['workload_packet_trace_identical']
+    ifa_script=ARCH/'ndnsim/ifa-pilot/scripts/verify_reference.py'
+    ifa_process=subprocess.run([sys.executable,str(ifa_script)],capture_output=True,text=True)
+    assert ifa_process.returncode==0,ifa_process.stderr or ifa_process.stdout
+    ifa_validation=json.loads(ifa_process.stdout)
     return {'status':'PASS','date':'2026-10-17','manifest_files':len(expected),'portable_local_links':local_links,
             'private_access_pattern_scan':'PASS','reference_input_hashes':'PASS','reference_evidence_unchanged':True,
             'reference_runtime_checks_recomputed':len(validation['checks']),
@@ -93,6 +101,7 @@ def verify(write_manifest=False):
             'topology_nodes':graph['nodes'],'topology_links':graph['links'],
             'literature_tree':'7/18','literature_central_graph':'2/15','joint_coded_studies':['T001'],
             'clean_second_stack_build_performed':False,
+            'ifa_reference':ifa_validation,
             'note':'Offline distribution checks; does not claim a new simulation, ML evaluation or successful fresh installation on another OS.'}
 
 if __name__=='__main__':

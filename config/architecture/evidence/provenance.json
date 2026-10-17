@@ -8,7 +8,8 @@
     "architecture/ndnsim/config/benign-pilot.json": "6f5103f3031c3ef37bff9875c593ab1c563d066667b379556138e57a8a0c55fa"
   },
   "evidence_policy": "Raw CSV, FIB, config and validation copied byte-for-byte from the accepted pilot; private host access files and command/resource paths excluded.",
-  "package_script_change": "bootstrap explicitly installs python3 and GNU time; scenario, config and runtime validator unchanged.",
+  "package_script_change": "Bootstrap installs required tools, defaults to one build job and applies the explicit single-wakeup scheduler patch. Original benign scenario/config/validator remain unchanged.",
   "public_pdfs_included": false,
-  "public_dependency_build_included": false
+  "public_dependency_build_included": false,
+  "original_reference_stack": "Original benign raw evidence predates the functional scheduler patch. Current-stack rerun and conformance passed; the original raw evidence is preserved unchanged."
 }

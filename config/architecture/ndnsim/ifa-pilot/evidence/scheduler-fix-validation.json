@@ -1,0 +1,1598 @@
+{
+  "status": "PASS",
+  "ndn_cxx_commit": "2b51e5796415b5d41fe268b35250b9453f16d3d6",
+  "scheduler_patch_sha256": "a984e004774d8d92541b060465556303f50f4c82cfa442020d2e807bf5686943",
+  "regression_before": {
+    "cases": [
+      {
+        "case": "replace-earliest",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 8256,
+        "event_limit": 132,
+        "status": "FAIL"
+      },
+      {
+        "case": "cancel-idempotently",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 4223,
+        "event_limit": 68,
+        "status": "FAIL"
+      },
+      {
+        "case": "cancel-all",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 127,
+        "event_limit": 4,
+        "status": "FAIL"
+      },
+      {
+        "case": "reentrant-zero-delay-and-context",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 2,
+        "event_limit": 8,
+        "status": "PASS"
+      }
+    ],
+    "status": "FAIL"
+  },
+  "regression_after": {
+    "cases": [
+      {
+        "case": "replace-earliest",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 128,
+        "event_limit": 132,
+        "status": "PASS"
+      },
+      {
+        "case": "cancel-idempotently",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 64,
+        "event_limit": 68,
+        "status": "PASS"
+      },
+      {
+        "case": "cancel-all",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 0,
+        "event_limit": 4,
+        "status": "PASS"
+      },
+      {
+        "case": "reentrant-zero-delay-and-context",
+        "callbacks_and_timing_ok": true,
+        "simulator_events": 2,
+        "event_limit": 8,
+        "status": "PASS"
+      }
+    ],
+    "status": "PASS"
+  },
+  "accepted_conditions": [
+    {
+      "output": "fixed-base",
+      "run_id": "ifa-base-00000-s1",
+      "checks": 44,
+      "config_sha256": "dd12113e597d2f84f0e65286ea223a685b9c4db76de1bd09ac1905338b4db806",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.03707040000000106,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.06953120000000013,
+        "attack_requests": 0,
+        "attack_sink_received": 0,
+        "attack_timeouts": 0,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R5": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R8": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R9": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R10": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "P": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 119988,
+          "benign": 1717056
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "00.53",
+      "max_process_rss_KiB": 43224
+    },
+    {
+      "output": "fixed-burst-2000",
+      "run_id": "ifa-brst-02000-s1",
+      "checks": 46,
+      "config_sha256": "5a0e54d9d8d1ae3e4fad6d1755316c993c5e134fe4943dea2b7de6ef03ff3c5e",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.037516000000000105,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.07045440000000003,
+        "attack_requests": 0,
+        "attack_sink_received": 0,
+        "attack_timeouts": 0,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 64,
+            "final_entries": 1,
+            "peak_during_attack_window": 64
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 10,
+            "final_entries": 1,
+            "peak_during_attack_window": 10
+          },
+          "R5": {
+            "peak_entries": 55,
+            "final_entries": 1,
+            "peak_during_attack_window": 55
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 19,
+            "final_entries": 1,
+            "peak_during_attack_window": 19
+          },
+          "R8": {
+            "peak_entries": 46,
+            "final_entries": 1,
+            "peak_during_attack_window": 46
+          },
+          "R9": {
+            "peak_entries": 28,
+            "final_entries": 1,
+            "peak_during_attack_window": 28
+          },
+          "R10": {
+            "peak_entries": 37,
+            "final_entries": 1,
+            "peak_during_attack_window": 37
+          },
+          "P": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 121367,
+          "benign": 51779360
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "03.84",
+      "max_process_rss_KiB": 47572
+    },
+    {
+      "output": "fixed-burst-3000",
+      "run_id": "ifa-brst-03000-s1",
+      "checks": 46,
+      "config_sha256": "ad48eac385388b07ce06c4598582b53b8fe7732ac5d41c55b7e8f87461aff6f2",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 292,
+        "benign_timeouts": 53,
+        "benign_rtt_max_s": 0.08464640000000045,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.07212720000000061,
+        "attack_requests": 0,
+        "attack_sink_received": 0,
+        "attack_timeouts": 0,
+        "queue_drops": 4316,
+        "queue_drops_by_direction": {
+          "P->R4": 4316
+        },
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 1049,
+            "final_entries": 1,
+            "peak_during_attack_window": 1049
+          },
+          "R2": {
+            "peak_entries": 6,
+            "final_entries": 1,
+            "peak_during_attack_window": 6
+          },
+          "R3": {
+            "peak_entries": 6,
+            "final_entries": 1,
+            "peak_during_attack_window": 6
+          },
+          "R4": {
+            "peak_entries": 995,
+            "final_entries": 1,
+            "peak_during_attack_window": 995
+          },
+          "R5": {
+            "peak_entries": 1043,
+            "final_entries": 1,
+            "peak_during_attack_window": 1043
+          },
+          "R6": {
+            "peak_entries": 6,
+            "final_entries": 1,
+            "peak_during_attack_window": 6
+          },
+          "R7": {
+            "peak_entries": 1007,
+            "final_entries": 1,
+            "peak_during_attack_window": 1007
+          },
+          "R8": {
+            "peak_entries": 1037,
+            "final_entries": 1,
+            "peak_during_attack_window": 1037
+          },
+          "R9": {
+            "peak_entries": 1018,
+            "final_entries": 1,
+            "peak_during_attack_window": 1018
+          },
+          "R10": {
+            "peak_entries": 1028,
+            "final_entries": 1,
+            "peak_during_attack_window": 1028
+          },
+          "P": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 121788,
+          "benign": 59579757
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "05.30",
+      "max_process_rss_KiB": 71772
+    },
+    {
+      "output": "fixed-burst-500",
+      "run_id": "ifa-brst-00500-s1",
+      "checks": 46,
+      "config_sha256": "826523af9f575ea84998989475590b830ebd57dd259f3276438ca8529d3b474f",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.037516000000000105,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.0704431999999997,
+        "attack_requests": 0,
+        "attack_sink_received": 0,
+        "attack_timeouts": 0,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 16,
+            "final_entries": 1,
+            "peak_during_attack_window": 16
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 3,
+            "final_entries": 1,
+            "peak_during_attack_window": 3
+          },
+          "R5": {
+            "peak_entries": 14,
+            "final_entries": 1,
+            "peak_during_attack_window": 14
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 5,
+            "final_entries": 1,
+            "peak_during_attack_window": 5
+          },
+          "R8": {
+            "peak_entries": 12,
+            "final_entries": 1,
+            "peak_during_attack_window": 12
+          },
+          "R9": {
+            "peak_entries": 7,
+            "final_entries": 1,
+            "peak_during_attack_window": 7
+          },
+          "R10": {
+            "peak_entries": 10,
+            "final_entries": 1,
+            "peak_during_attack_window": 10
+          },
+          "P": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 120740,
+          "benign": 14219344
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "01.30",
+      "max_process_rss_KiB": 43268
+    },
+    {
+      "output": "fixed-burst-5000",
+      "run_id": "ifa-brst-05000-s1",
+      "checks": 46,
+      "config_sha256": "5ecfc075aa904cf1d044782f05c42eef856b3e64418a54648bbc1430ed9bcb50",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 286,
+        "benign_timeouts": 59,
+        "benign_rtt_max_s": 0.08480080000000001,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.07230559999999997,
+        "attack_requests": 0,
+        "attack_sink_received": 0,
+        "attack_timeouts": 0,
+        "queue_drops": 14321,
+        "queue_drops_by_direction": {
+          "P->R4": 14321
+        },
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 3048,
+            "final_entries": 1,
+            "peak_during_attack_window": 3048
+          },
+          "R2": {
+            "peak_entries": 6,
+            "final_entries": 1,
+            "peak_during_attack_window": 6
+          },
+          "R3": {
+            "peak_entries": 6,
+            "final_entries": 1,
+            "peak_during_attack_window": 6
+          },
+          "R4": {
+            "peak_entries": 2997,
+            "final_entries": 1,
+            "peak_during_attack_window": 2997
+          },
+          "R5": {
+            "peak_entries": 3043,
+            "final_entries": 1,
+            "peak_during_attack_window": 3043
+          },
+          "R6": {
+            "peak_entries": 6,
+            "final_entries": 1,
+            "peak_during_attack_window": 6
+          },
+          "R7": {
+            "peak_entries": 3007,
+            "final_entries": 1,
+            "peak_during_attack_window": 3007
+          },
+          "R8": {
+            "peak_entries": 3038,
+            "final_entries": 1,
+            "peak_during_attack_window": 3038
+          },
+          "R9": {
+            "peak_entries": 3017,
+            "final_entries": 1,
+            "peak_during_attack_window": 3017
+          },
+          "R10": {
+            "peak_entries": 3028,
+            "final_entries": 1,
+            "peak_during_attack_window": 3028
+          },
+          "P": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 121929,
+          "benign": 69641626
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "07.61",
+      "max_process_rss_KiB": 116476
+    },
+    {
+      "output": "fixed-burst-short",
+      "run_id": "ifa-bs05-05000-s1",
+      "checks": 46,
+      "config_sha256": "fd40709cdad2bd7e11efac2000d711c725ba6b1071c317ce9e420980ebb8d47f",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 340,
+        "benign_timeouts": 5,
+        "benign_rtt_max_s": 0.08312799999999942,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.07061039999999963,
+        "attack_requests": 0,
+        "attack_sink_received": 0,
+        "attack_timeouts": 0,
+        "queue_drops": 1341,
+        "queue_drops_by_direction": {
+          "P->R4": 1341
+        },
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 1500,
+            "final_entries": 1,
+            "peak_during_attack_window": 1500
+          },
+          "R2": {
+            "peak_entries": 3,
+            "final_entries": 1,
+            "peak_during_attack_window": 3
+          },
+          "R3": {
+            "peak_entries": 3,
+            "final_entries": 1,
+            "peak_during_attack_window": 3
+          },
+          "R4": {
+            "peak_entries": 1411,
+            "final_entries": 1,
+            "peak_during_attack_window": 1411
+          },
+          "R5": {
+            "peak_entries": 1487,
+            "final_entries": 1,
+            "peak_during_attack_window": 1487
+          },
+          "R6": {
+            "peak_entries": 3,
+            "final_entries": 1,
+            "peak_during_attack_window": 3
+          },
+          "R7": {
+            "peak_entries": 1426,
+            "final_entries": 1,
+            "peak_during_attack_window": 1426
+          },
+          "R8": {
+            "peak_entries": 1474,
+            "final_entries": 1,
+            "peak_during_attack_window": 1474
+          },
+          "R9": {
+            "peak_entries": 1442,
+            "final_entries": 1,
+            "peak_during_attack_window": 1442
+          },
+          "R10": {
+            "peak_entries": 1458,
+            "final_entries": 1,
+            "peak_during_attack_window": 1458
+          },
+          "P": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 120354,
+          "benign": 8843988
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "01.24",
+      "max_process_rss_KiB": 72920
+    },
+    {
+      "output": "fixed-ifa-12000",
+      "run_id": "ifa-atk1-12000-s1",
+      "checks": 46,
+      "config_sha256": "e68dd23401938b36def960165c5e8f078229264126e0cbf6a207c4a2a745dac0",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.037100800000000156,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.06959413300000072,
+        "attack_requests": 60000,
+        "attack_sink_received": 60000,
+        "attack_timeouts": 60000,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          },
+          "R5": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          },
+          "R8": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          },
+          "R9": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          },
+          "R10": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          },
+          "P": {
+            "peak_entries": 12001,
+            "final_entries": 1,
+            "peak_during_attack_window": 12001
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 121761,
+          "benign": 1717056,
+          "attack": 24391152
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "12.81",
+      "max_process_rss_KiB": 345872
+    },
+    {
+      "output": "fixed-ifa-2000",
+      "run_id": "ifa-atk1-02000-s1",
+      "checks": 46,
+      "config_sha256": "eda1e5116eea80f7b598c65643cfc17a02719f8b195914e7e68ba5ceccf7de44",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.037100800000001044,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.06956639999999936,
+        "attack_requests": 10000,
+        "attack_sink_received": 10000,
+        "attack_timeouts": 10000,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R5": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R8": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R9": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R10": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "P": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 121224,
+          "benign": 1717056,
+          "attack": 3991152
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "02.27",
+      "max_process_rss_KiB": 93372
+    },
+    {
+      "output": "fixed-ifa-50",
+      "run_id": "ifa-atk1-00050-s1",
+      "checks": 46,
+      "config_sha256": "ab5e1b11f64d1552543f4223e51b95c24bcc347ada3be0aeb15ba74270d5f6ce",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.03709760000000095,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.06953440000000022,
+        "attack_requests": 250,
+        "attack_sink_received": 250,
+        "attack_timeouts": 250,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          },
+          "R5": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          },
+          "R8": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          },
+          "R9": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          },
+          "R10": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          },
+          "P": {
+            "peak_entries": 51,
+            "final_entries": 1,
+            "peak_during_attack_window": 51
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 120238,
+          "benign": 1717056,
+          "attack": 97136
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "00.56",
+      "max_process_rss_KiB": 43288
+    },
+    {
+      "output": "fixed-ifa-500",
+      "run_id": "ifa-atk1-00500-s1",
+      "checks": 46,
+      "config_sha256": "719c0e5647c3662f96e064e139c99029498b86503681efa8ff898805440083e4",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.037100800000001044,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.06955040000000068,
+        "attack_requests": 2500,
+        "attack_sink_received": 2500,
+        "attack_timeouts": 2500,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          },
+          "R5": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          },
+          "R8": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          },
+          "R9": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          },
+          "R10": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          },
+          "P": {
+            "peak_entries": 501,
+            "final_entries": 1,
+            "peak_during_attack_window": 501
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 120713,
+          "benign": 1717056,
+          "attack": 991144
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "00.96",
+      "max_process_rss_KiB": 53032
+    },
+    {
+      "output": "fixed-ifa-500-L4",
+      "run_id": "ifa-atk1-00500-s1-L4",
+      "checks": 46,
+      "config_sha256": "ea2d84542dd4cb85e3fd4b32383ca87e7f6d728c9fb1c094eb4a12e34f7e2c4e",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.037133600000000655,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.06957279999999955,
+        "attack_requests": 2500,
+        "attack_sink_received": 2500,
+        "attack_timeouts": 2500,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R5": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R8": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R9": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "R10": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          },
+          "P": {
+            "peak_entries": 2001,
+            "final_entries": 1,
+            "peak_during_attack_window": 2001
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 125966,
+          "benign": 1733616,
+          "attack": 971144
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "00.99",
+      "max_process_rss_KiB": 88796
+    },
+    {
+      "output": "fixed-ifa-5000",
+      "run_id": "ifa-atk1-05000-s1",
+      "checks": 46,
+      "config_sha256": "5fa9e571b5909ed1321206f85634f3a82ee3efa8c1529abb54ad933e801db5d9",
+      "scenario_sha256": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
+      "validator_sha256": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
+      "metrics": {
+        "benign_requests": 345,
+        "benign_data": 345,
+        "benign_timeouts": 0,
+        "benign_rtt_max_s": 0.037100800000000156,
+        "report_requests": 280,
+        "report_received": 280,
+        "report_status_counts": {
+          "on_time": 280
+        },
+        "report_missing": 0,
+        "report_timeouts": 0,
+        "report_window_to_arrival_max_s": 0.06956639999999936,
+        "attack_requests": 25000,
+        "attack_sink_received": 25000,
+        "attack_timeouts": 25000,
+        "queue_drops": 0,
+        "queue_drops_by_direction": {},
+        "pit_by_node": {
+          "R1": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          },
+          "R2": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R3": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R4": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          },
+          "R5": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          },
+          "R6": {
+            "peak_entries": 1,
+            "final_entries": 1,
+            "peak_during_attack_window": 1
+          },
+          "R7": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          },
+          "R8": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          },
+          "R9": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          },
+          "R10": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          },
+          "P": {
+            "peak_entries": 5001,
+            "final_entries": 1,
+            "peak_during_attack_window": 5001
+          }
+        },
+        "network_transmission_bytes_ndn": {
+          "report": 121238,
+          "benign": 1717056,
+          "attack": 10111152
+        },
+        "nack_trace_counts_by_family_reason": {}
+      },
+      "elapsed_machine_time": "05.10",
+      "max_process_rss_KiB": 171716
+    }
+  ],
+  "conformance": {
+    "scheduler-conformance-base": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 17190,
+        "sha256": "20f80bd066ce9b1f9888dd8bb7a656f7595564b45e0b295c5e94133e40cdedd9"
+      },
+      "workload_second": {
+        "rows": 17190,
+        "sha256": "20f80bd066ce9b1f9888dd8bb7a656f7595564b45e0b295c5e94133e40cdedd9"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-burst2000": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-B1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 377190,
+        "sha256": "7b0ccc778b5beafffda7092f828fc563cc985151d9f4b7eb4a7f7938b25b6382"
+      },
+      "workload_second": {
+        "rows": 377190,
+        "sha256": "7b0ccc778b5beafffda7092f828fc563cc985151d9f4b7eb4a7f7938b25b6382"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-burst500": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-B1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 107190,
+        "sha256": "f371e8cfe73448cfef121977b0f597ff265085f51044d786939d8bb38911e8c3"
+      },
+      "workload_second": {
+        "rows": 107190,
+        "sha256": "f371e8cfe73448cfef121977b0f597ff265085f51044d786939d8bb38911e8c3"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-high": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-A1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 1097190,
+        "sha256": "5d8815902eb4bb8ef24bbec9be2af5ed288c99aa4dde6f8fa65cc64d0abc705f"
+      },
+      "workload_second": {
+        "rows": 1097190,
+        "sha256": "5d8815902eb4bb8ef24bbec9be2af5ed288c99aa4dde6f8fa65cc64d0abc705f"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-ifa2000": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-A1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 197190,
+        "sha256": "c2b1c07de10d7fd1a38fe7d3b85650f5d613a104b0859cac2fd7ae5d7f346584"
+      },
+      "workload_second": {
+        "rows": 197190,
+        "sha256": "c2b1c07de10d7fd1a38fe7d3b85650f5d613a104b0859cac2fd7ae5d7f346584"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-ifa50": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-A1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 21690,
+        "sha256": "e5dc2d798b2bba883dd7c9bd8dc2b78fa71ab39b8c93a9cbd2ab393df11ef7a7"
+      },
+      "workload_second": {
+        "rows": 21690,
+        "sha256": "e5dc2d798b2bba883dd7c9bd8dc2b78fa71ab39b8c93a9cbd2ab393df11ef7a7"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-ifa500": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-A1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 62190,
+        "sha256": "e65efc9bec9aa147dabf75f7e45532ce3e045a52b3f30842bd894617a2a8e7e4"
+      },
+      "workload_second": {
+        "rows": 62190,
+        "sha256": "e65efc9bec9aa147dabf75f7e45532ce3e045a52b3f30842bd894617a2a8e7e4"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-ifa5000": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-A1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 467190,
+        "sha256": "a54cd75c56194e9ff5d74041144cadabc6d5cf997cef132aad8d0b4c9dd31b80"
+      },
+      "workload_second": {
+        "rows": 467190,
+        "sha256": "a54cd75c56194e9ff5d74041144cadabc6d5cf997cef132aad8d0b4c9dd31b80"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-lifetime": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-A1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 62190,
+        "sha256": "8c70e26051e62cef7e0575151d7b2b2dc086fc56877fdd1b4e7bd713a835f61c"
+      },
+      "workload_second": {
+        "rows": 62190,
+        "sha256": "8c70e26051e62cef7e0575151d7b2b2dc086fc56877fdd1b4e7bd713a835f61c"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    },
+    "scheduler-conformance-short": {
+      "status": "PASS",
+      "checks": {
+        "scenario.cpp": true,
+        "validator.py": true,
+        "config.json": true,
+        "nodes.csv": true,
+        "links.csv": true,
+        "cache-limits.csv": true,
+        "pit-probe.csv": true,
+        "queue-drops.csv": true,
+        "agent-R1.csv": true,
+        "agent-R10.csv": true,
+        "agent-R2.csv": true,
+        "agent-R3.csv": true,
+        "agent-R4.csv": true,
+        "agent-R5.csv": true,
+        "agent-R6.csv": true,
+        "agent-R7.csv": true,
+        "agent-R8.csv": true,
+        "agent-R9.csv": true,
+        "client-C1.csv": true,
+        "client-C2.csv": true,
+        "client-C3.csv": true,
+        "client-M.csv": true,
+        "collector-received.csv": true,
+        "flow-B1.csv": true,
+        "producer.csv": true,
+        "sink.csv": true,
+        "workload_packet_audit": true
+      },
+      "workload_first": {
+        "rows": 85734,
+        "sha256": "a1198a572a0dc550c441fd2338c68af31b706df891e93d2fbcf18673b17fb24f"
+      },
+      "workload_second": {
+        "rows": 85734,
+        "sha256": "a1198a572a0dc550c441fd2338c68af31b706df891e93d2fbcf18673b17fb24f"
+      },
+      "scope": "identical-input replay, not statistically independent runs; other signed management traffic excluded"
+    }
+  },
+  "original_benign": {
+    "checks": 39,
+    "status": "PASS",
+    "conformance": "PASS"
+  },
+  "old_attempts_preserved": [
+    "ifa-brst-03000-s1",
+    "ifa-brst-05000-s1"
+  ],
+  "scope": "Same scenario/config inputs and 180-second cap; scheduler wakeup fix, no traffic/link/PIT-capacity changes. Original capped attempts remain incomplete historical evidence. No ML or final dataset."
+}
