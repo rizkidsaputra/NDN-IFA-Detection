@@ -1,0 +1,17 @@
+{
+  "spec": {
+    "kind": "graph",
+    "variant": "Mask+Age",
+    "seed": 11
+  },
+  "run_identity": "1428be2d8d84799befed0f16b1e47107022f0cea2d42a8de520eeb786aa6f291",
+  "sha256": {
+    "model.pt": "a49bbd1d9c862d69dece72dbd7dc00243790258886c2d5264aa7922c7ab405c8",
+    "preprocessor.joblib": "2505f7b36e499bb6ee4dc34b7f97108d2cbabbabe949c7600fbb85e3cdeb0203",
+    "metadata.json": "06e7b6daf8f58964ed6b91bb02ce92c0406d213d60e1cc4aa130c420ab39abbc",
+    "oof_predictions.csv": "8fa202f96b80527efc8921142c4a704fbe064bc73f13a7830ad9454b801a1b09",
+    "train_predictions.csv": "6854f4e75f1eeb61b4fd89cf8bdce784ad9e60040367dc2d471f2034ba473a8d",
+    "history.csv": "0a56a79bff247621b6a6d7066f1a8d80a59f93c0796b18564abd0dd3d3d0accf",
+    "fold_plan.json": "172768261177548e7fe561582da2e9a16c6591646fcee562c2c8e27e03e9528d"
+  }
+}

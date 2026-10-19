@@ -1,0 +1,40 @@
+{
+  "spec": {
+    "kind": "graph",
+    "variant": "Mask+Age",
+    "seed": 11
+  },
+  "run_identity": "1428be2d8d84799befed0f16b1e47107022f0cea2d42a8de520eeb786aa6f291",
+  "dataset_id": "c69dd11e1dfdc6ca3e52cd9f8ddc4ea5d5564a6aefcd273b2d1100084defe9a0",
+  "configuration_id": "3b8b28c912ca8739c8021ea548e09974bd2e38a5a3ceb198b225a860c6650de4",
+  "threshold": 0.00497640622779727,
+  "calibration": {
+    "selection_source": "grouped_train_out_of_fold_predictions",
+    "objective": "max recall under empirical OOF FPR constraint",
+    "tie_break": "F1, lower FPR, higher threshold",
+    "target_fpr": 0.05,
+    "threshold": 0.00497640622779727,
+    "interpretation": "Calibration diagnostic only; empirical FPR constraint is not a guarantee on validation or future data."
+  },
+  "inner_selected_budgets": [
+    46,
+    1,
+    10
+  ],
+  "final_budget": 10,
+  "training_families": [
+    "family-00001",
+    "family-00002",
+    "family-00005",
+    "family-00006",
+    "family-00008",
+    "family-00009",
+    "family-00010",
+    "family-00013",
+    "family-00014",
+    "family-00015",
+    "family-00016"
+  ],
+  "external_validation_used_for_training": false,
+  "test_evaluated": false
+}
