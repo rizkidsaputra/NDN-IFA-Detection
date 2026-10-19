@@ -2,6 +2,8 @@
 
 Dokumen ini dapat langsung disalin ke Outline. Tujuannya menjelaskan lokasi berkas dan dua perintah pengujian tanpa mengharuskan pembaca menelusuri seluruh repository.
 
+Dokumen ini khusus untuk **smoke test simulator**. Untuk penjelasan bagaimana hasil topologi dipakai oleh detector ML, baca [Implementasi ML pada Topologi NDN](ML_TOPOLOGY_PIPELINE.md). Dua run di bawah bukan train/test set ML final.
+
 ## Lokasi berkas
 
 Ketiga berkas **sudah tersedia di branch `main`**, tetapi tidak berada di root repository.

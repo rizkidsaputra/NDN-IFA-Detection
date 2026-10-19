@@ -12,7 +12,7 @@ Tiga istilah yang perlu dipahami:
 - **Data:** paket balasan untuk Interest.
 - **PIT:** catatan permintaan yang masih menunggu balasan pada router.
 
-Saat ini jaringan, pengukuran router, pengiriman report, dan uji IFA sudah berjalan. **Detektor dan model ML belum dipasang.** Jadi, lab mencatat apa yang terjadi; belum memutuskan sendiri apakah ada serangan.
+Saat ini jaringan, pengukuran router, pengiriman report, dataset kausal, dan evaluasi detector ML sudah berjalan. ML telah dilatih dan diuji **secara offline** memakai telemetry dari topologi ini. Model belum ditanam sebagai alarm real-time di dalam ndnSIM. Alur lengkapnya dijelaskan di [Implementasi ML pada Topologi NDN](https://github.com/rizkidsaputra/NDN-IFA-Detection/blob/main/ML_TOPOLOGY_PIPELINE.md).
 
 ## 2. Bentuk lab
 
@@ -37,7 +37,7 @@ M - R10
 | P | Producer di sisi R4; membalas permintaan normal |
 | M | Collector di sisi R10; meminta dan menerima report router |
 
-Setiap satu detik, agent pada router mencatat kondisi lokal. M meminta report itu melalui jaringan NDN, lalu router mengirimkannya sebagai Data. Report inilah yang nantinya menjadi masukan detektor.
+Setiap satu detik, agent pada router mencatat kondisi lokal. M meminta report itu melalui jaringan NDN, lalu router mengirimkannya sebagai Data. Report yang tersedia pada deadline direkonstruksi menjadi snapshot graf dan urutan waktu untuk masukan detector terpusat.
 
 ## 3. Persiapan
 
@@ -192,7 +192,7 @@ Perintah akan menampilkan ringkasan. Pada lab acuan, hasilnya:
 | Data consumer normal diterima | 345/345 | 345/345 |
 | Report tepat waktu | 280/280 | 280/280 |
 
-Angka request/report lebih banyak daripada langkah 3 karena percobaannya lebih panjang. Pada IFA ringan, PIT meningkat tetapi layanan normal dan report masih berhasil. **PASS berarti percobaan dan catatannya lolos pemeriksaan, bukan berarti serangan berhasil melumpuhkan jaringan atau terdeteksi oleh ML.**
+Angka request/report lebih banyak daripada langkah 3 karena percobaannya lebih panjang. Pada IFA ringan, PIT meningkat tetapi layanan normal dan report masih berhasil. **PASS berarti percobaan simulator dan catatannya lolos pemeriksaan, bukan skor detector ML.** Evaluasi ML final memakai dataset family-disjoint yang lebih besar dan dijelaskan terpisah.
 
 ## 6. Hasil mana yang perlu dibaca?
 
@@ -226,6 +226,6 @@ Simpan folder hasil ketika meminta bantuan. Cukup sampaikan tahap yang gagal dan
 
 Uji IFA sudah dilakukan pada beberapa laju. Sampai 12.000 Interest/detik, PIT bertambah tetapi layanan normal dan report tetap berhasil pada konfigurasi yang diuji. Burst permintaan sah pendek juga pernah menimbulkan pembuangan paket dan timeout layanan, sementara report tetap tepat waktu. Dua percobaan burst panjang awalnya terhenti karena batas waktu komputasi. Setelah bug scheduler diperbaiki, keduanya selesai dengan beban yang sama. Report tetap tepat waktu; layanan consumer normal menurun pada burst tinggi.
 
-Artinya, **kita belum membuktikan bahwa IFA menyebabkan report hilang**. Kita juga belum menguji performa detektor karena detektornya belum dipasang. Hasil lab awal ini menjadi dasar untuk menentukan percobaan berikutnya.
+Artinya, **kita belum membuktikan bahwa IFA menyebabkan report hilang**. Evaluasi offline detector sudah selesai: logistic regression mencapai family-macro PR-AUC 1,0000 dan F1 0,9926, sedangkan GraphSAGE+GRU Plain mencapai PR-AUC 0,9967 ± 0,0017 dan F1 0,9602 ± 0,0160. Model graf-temporal bekerja, tetapi tidak mengungguli baseline sederhana pada domain ini. Hasil tersebut tidak boleh disebut deployment real-time atau generalisasi lintas topologi.
 
 **Tentang istilah yang sebelumnya membingungkan:** “biaya komputasi” berarti waktu dan RAM yang dibutuhkan laptop untuk menjalankan simulasi. “Model resource” berarti batas kemampuan router yang kita tiru; misalnya, berapa banyak permintaan yang dapat disimpan dalam PIT. Saat ini batas kapasitas PIT belum diterapkan. Ini pekerjaan pengembangan lanjutan; untuk membuat lab, cukup ikuti langkah pemasangan dan uji ringan di atas.

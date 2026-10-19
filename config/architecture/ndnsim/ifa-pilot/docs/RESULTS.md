@@ -1,6 +1,6 @@
 # Hasil pilot dan perbaikan scheduler
 
-Diuji pada Mint acuan, 17 Oktober 2026. **Dua kontrol burst panjang kini selesai**, setelah perbaikan scheduler. Belum ada detector/ML, dataset final atau klaim keunggulan model.
+Diuji pada Mint acuan, 17 Oktober 2026. **Dua kontrol burst panjang kini selesai**, setelah perbaikan scheduler. Pada saat pilot ini dibuat belum ada detector/ML atau dataset final. Tahap lanjutan kemudian menyelesaikan evaluasi ML offline; lihat [dokumentasi ML-topologi](https://github.com/rizkidsaputra/NDN-IFA-Detection/blob/main/ML_TOPOLOGY_PIPELINE.md). Hasil lanjutan tidak menunjukkan keunggulan GraphSAGE+GRU.
 
 ## Masalah yang ditemukan
 

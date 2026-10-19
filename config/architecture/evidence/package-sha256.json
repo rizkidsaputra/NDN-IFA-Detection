@@ -61,7 +61,7 @@
   "architecture/ndnsim/ifa-pilot/config/ifa-bs05-05000-s1.json": "fd40709cdad2bd7e11efac2000d711c725ba6b1071c317ce9e420980ebb8d47f",
   "architecture/ndnsim/ifa-pilot/docs/ndn-cxx-scheduler-single-wakeup.patch": "a984e004774d8d92541b060465556303f50f4c82cfa442020d2e807bf5686943",
   "architecture/ndnsim/ifa-pilot/docs/PROTOKOL_PILOT.md": "c3a13ea9eaad9e5f61183a2fc080a140849184a8e1ae0370be7acd82ea2caa9b",
-  "architecture/ndnsim/ifa-pilot/docs/RESULTS.md": "3694f9ec4d91407890b1d5975d9b15f512a73ee77586dfba64476c337aaa2997",
+  "architecture/ndnsim/ifa-pilot/docs/RESULTS.md": "f5c071ffae11aeedbf5e2096ff52ff24a8ee8fbde623f50724f3b538f6c53e1e",
   "architecture/ndnsim/ifa-pilot/evidence/reference-run/agent-R1.csv": "140b18767591795de14e2ebd3294155d1ce903a3ad054d2f34326d262ddbb7cc",
   "architecture/ndnsim/ifa-pilot/evidence/reference-run/agent-R10.csv": "c156a71587c9fd1b62f3826b43fc7c193792d1bc684b01aca486031390645e31",
   "architecture/ndnsim/ifa-pilot/evidence/reference-run/agent-R2.csv": "1405a61aa2194524c0f8b586ed3d24b0aaaaacab06fa60a9fd3fd51e9f86fdae",
@@ -112,7 +112,7 @@
   "architecture/scripts/analyze_topology.py": "487d6cff1978b2b2aebc340221106cb52b83f2b9793aae73194c4963e005fe0d",
   "architecture/scripts/recount_literature.py": "9a61e598cf1cfff34198b5d7bb867d21daa9887ca240dc9b2fa81572c05f0704",
   "architecture/scripts/verify_package.py": "e6e952ebb12ef7f309a709f13534be969eb41abac454f71db9d8d06dc5aaca33",
-  "LAB_GUIDE.md": "e866d695701364b69874682e06784f4288bb11ea15c69c73974ba824fd9825f4",
+  "LAB_GUIDE.md": "7c97198e3251c61b542bc2ddc9208f5680be26df38bc158b2e0ab26e16f86ca7",
   "PROJECT_CONTEXT.md": "b808690a999ecaa534741073d2baf044dbe1dff8563fce08a4334cf99094a1c8",
-  "README.md": "4fb90e9b63c055b3b920a621cd3d4974b55798b9136bb57b651fb6a019171eed"
+  "README.md": "ebd278d606885ed99a11a6dd9a1e3bfc5a477db73e260b41f07e65eaff09ecc9"
 }
