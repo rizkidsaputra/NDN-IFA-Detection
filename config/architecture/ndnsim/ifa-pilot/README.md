@@ -4,12 +4,20 @@ Ikuti [panduan utama](../../../LAB_GUIDE.md) untuk memasang lab. Folder ini meng
 
 ## Mulai dengan beban ringan
 
-Dari folder ini:
+Dari folder ini. Jika posisi terminal masih di root repository, masuk dahulu dengan `cd config/architecture/ndnsim/ifa-pilot`:
 
 ```bash
 bash scripts/run_ifa.sh config/ifa-base-00000-s1.json
 bash scripts/run_ifa.sh config/ifa-atk1-00050-s1.json
 ```
+
+Tautan langsung berkas:
+
+- [`scripts/run_ifa.sh`](scripts/run_ifa.sh)
+- [`config/ifa-base-00000-s1.json`](config/ifa-base-00000-s1.json)
+- [`config/ifa-atk1-00050-s1.json`](config/ifa-atk1-00050-s1.json)
+
+Lihat juga [quick start dari root repository](https://github.com/rizkidsaputra/NDN-IFA-Detection/blob/main/IFA_QUICKSTART.md).
 
 Keduanya diharapkan PASS, dengan 345/345 Data normal dan 280/280 report tepat waktu. Pada IFA ringan, 250 Interest unik mencapai aplikasi silent di P tanpa memperoleh Data. Detektor/ML belum dipasang.
 

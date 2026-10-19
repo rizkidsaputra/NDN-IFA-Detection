@@ -94,7 +94,7 @@
   "architecture/ndnsim/ifa-pilot/evidence/reference-run/validation.json": "d086204e92ba4ed67d8f70d1735ef2209a2521605d0b47be8105ac39041d8204",
   "architecture/ndnsim/ifa-pilot/evidence/reference-run/validator.py": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
   "architecture/ndnsim/ifa-pilot/evidence/scheduler-fix-validation.json": "0a082d6c4b8bb838947e7f57011c2aa2533786031f7151822b4ec946b903c25d",
-  "architecture/ndnsim/ifa-pilot/README.md": "9420ed036b9a87e1b1305df677c49864c4ed1e18014cfecd2d7198ed915da0b9",
+  "architecture/ndnsim/ifa-pilot/README.md": "47221eefaf6ee68d1380c0e622d532ff9a4ed19c07ce9e29036465fda4f839d5",
   "architecture/ndnsim/ifa-pilot/scenarios/ifa-tree.cpp": "1a2b189b0687991337e7c3178d2f039d6eaf88d1819340a9a3c83468f72037e3",
   "architecture/ndnsim/ifa-pilot/scripts/apply_scheduler_fix.sh": "21e27b48432316fb5f7a75ec25b297f2e331d5cdd07dc039ce3b910ba540ce82",
   "architecture/ndnsim/ifa-pilot/scripts/check_replay.py": "3a77b96f4fb85a2bcd876dd9071f24b72ee06ab17712c6526a29ef03feb053bd",
@@ -112,7 +112,7 @@
   "architecture/scripts/analyze_topology.py": "487d6cff1978b2b2aebc340221106cb52b83f2b9793aae73194c4963e005fe0d",
   "architecture/scripts/recount_literature.py": "9a61e598cf1cfff34198b5d7bb867d21daa9887ca240dc9b2fa81572c05f0704",
   "architecture/scripts/verify_package.py": "e6e952ebb12ef7f309a709f13534be969eb41abac454f71db9d8d06dc5aaca33",
-  "LAB_GUIDE.md": "0589f53941e9ec7629320ee26924cd0033e5e96e251ed4417a11b3ee34456ff8",
+  "LAB_GUIDE.md": "e866d695701364b69874682e06784f4288bb11ea15c69c73974ba824fd9825f4",
   "PROJECT_CONTEXT.md": "b808690a999ecaa534741073d2baf044dbe1dff8563fce08a4334cf99094a1c8",
   "README.md": "4fb90e9b63c055b3b920a621cd3d4974b55798b9136bb57b651fb6a019171eed"
 }

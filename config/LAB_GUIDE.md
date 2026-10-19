@@ -157,6 +157,16 @@ Hasil baru berada di `runs/latihan-kedua/`. Gunakan nama hasil yang berbeda untu
 
 Source IFA sudah tersedia di repository; tidak perlu mengunduh arsip terpisah. Setelah lab normal berhasil:
 
+Tiga berkas untuk pengujian berada di lokasi berikut. Path ini relatif terhadap root repository:
+
+| Kegunaan | Lokasi |
+|---|---|
+| Runner | [`config/architecture/ndnsim/ifa-pilot/scripts/run_ifa.sh`](architecture/ndnsim/ifa-pilot/scripts/run_ifa.sh) |
+| Baseline tanpa attacker aktif | [`config/architecture/ndnsim/ifa-pilot/config/ifa-base-00000-s1.json`](architecture/ndnsim/ifa-pilot/config/ifa-base-00000-s1.json) |
+| IFA ringan 50 Interest/detik | [`config/architecture/ndnsim/ifa-pilot/config/ifa-atk1-00050-s1.json`](architecture/ndnsim/ifa-pilot/config/ifa-atk1-00050-s1.json) |
+
+Perintah `bash scripts/run_ifa.sh config/...` menggunakan path relatif. Karena itu, terminal **harus berada di folder `ifa-pilot`** sebelum perintah dijalankan. Lihat juga [Quick Start IFA](https://github.com/rizkidsaputra/NDN-IFA-Detection/blob/main/IFA_QUICKSTART.md).
+
 ```bash
 cd "$HOME/ndn-ifa-lab/NDN-IFA-Detection/config/architecture/ndnsim/ifa-pilot"
 ```

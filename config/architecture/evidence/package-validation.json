@@ -2,7 +2,7 @@
   "status": "PASS",
   "date": "2026-10-17",
   "manifest_files": 116,
-  "portable_local_links": 40,
+  "portable_local_links": 46,
   "private_access_pattern_scan": "PASS",
   "reference_input_hashes": "PASS",
   "reference_evidence_unchanged": true,
