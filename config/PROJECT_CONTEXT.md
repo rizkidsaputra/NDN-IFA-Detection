@@ -1,8 +1,40 @@
 # Konteks portabel proyek NDN-IFA Detection
 
-Versi konteks: 17 Oktober 2026. Berlaku untuk paket publik `config/`. Berkas ini dapat diberikan kepada AI pada komputer kolaborator tanpa riwayat chat sebelumnya.
+Versi konteks: **20 Oktober 2026**. Berlaku untuk paket publik `config/`. Berkas ini dapat diberikan kepada AI pada komputer kolaborator tanpa riwayat chat sebelumnya. **Bagian 0 adalah arah dan status aktif. Bagian 1-9 mempertahankan riwayat desain/pilot 17 Oktober**, sehingga pernyataan belum ada ML atau belum ada bottleneck di sana tidak berlaku sebagai status seluruh proyek hari ini.
 
-## 1. Tujuan dan pertanyaan kerja
+## 0. Arah aktif: monitoring impairment dan prioritization
+
+Paper mengevaluasi pengiriman report melalui NDN, input detektor yang kausal, serta manfaat dan trade-off prioritas saat congestion. Ringkasan hasil lengkap berada di dokumen RESEARCH_STATUS.md pada root repository. Status: dapat melanjutkan manuskrip/review internal, belum dinyatakan siap submit atau fully reproducible.
+
+**RQ1:** How are congestion-induced monitoring report loss and delay associated with the detection performance and latency of machine learning-based Interest Flooding Attack detectors in Named Data Networking?
+
+**RQ2:** To what extent does priority-based monitoring report delivery improve telemetry availability and Interest Flooding Attack detection reliability under congestion, and what trade-offs does it impose on legitimate traffic?
+
+RQ1 adalah asosiasi, bukan efek kausal murni missingness. RQ2 adalah efek total strict non-preemptive priority dengan push-out admission, bukan scheduling terisolasi. Plain/Mask/Mask+Age dan manfaat graf menjadi analisis pendukung. Judul submission belum dibekukan; jangan menganggap robustness atau novelty absolut sudah terbukti.
+
+### Campaign dan protokol jangan dicampur
+
+- Campaign teman:36 run utama,18FIFO+18Priority;3rate100/300/1500Hz dan3draw independen/rate;S2background-only/S3IFA+background. Detektor18checkpoint=GRU-only/GraphSAGE+GRU x Plain/Mask/Mask+Age x seed11/23/37. Sequence5, graph hidden32, GRU64;training17family/split11/2/4 menurut metadata/source;threshold grouped train OOF frozen. Manifest split dan original OOF/history belum lengkap untuk audit ulang.
+- Evaluasi lokal sebelumnya:dataset31family/split19/8/4,selectedsequence20hidden64,lima seed,thresholdvalidation dan one-shot test selesai18Oktober. Baseline tabular tidak dikalahkan GraphSAGE+GRU. Hasil ini bukan stress test FIFO-Priority dan tidak boleh digabung dengan checkpoint atau status test campaign teman.
+- Repository telah menerima modul `architecture/ndnsim/monitoring/` dan satu bundle GraphSAGE+GRU Mask+Age seed11 dari commit3499c7a. Ini replay offline, bukan deployment collector real-time, model terpilih lokal, atau paket training lengkap. Jangan mengarang command untuk mereproduksi stress campaign dari smoke configs lama.
+
+### Konfigurasi campaign teman
+
+Tree17node/16link,agent R1-R10,collector M diR10,producer P diR4. Durasi30s/cache0. Link umum10Mbps/2ms;R8->R10=1Mbps,balik10Mbps,shared100paket/arah. A1 menawarkan250unsatisfiedInterest pada50Hz selama[5,10);A2inaktif. BenignC1-C3 masing-masing5Hz selama[2,25);background[4,15). KeduaNetDeviceR8-R10 menerapkan policy. Classifier Interest/Data memakai exact name allowlist, bukan autentikasi dan belum tahan spoofing.
+
+Agent sampling1s x28window;280expectedreport/run. Poll w+0,05+0,001i untuk urutanrouteri0..9;cutoff w+0,25s;lifetime1s;tanparetransmission. Measurement10deltaNFD+PITsnapshot. Input hanya dari Data collector yang sudah tiba dan sample-end/ready/seq eligible. LOCF,maskfreshness,age=cutoff-sample_end;freshage0,25s. Late report tidak merevisi keputusan lama. Inferensi dilakukan offline.
+
+### Hasil dan cakupan bukti
+
+FIFO on-time perrun280/214/208 dari280 pada100/300/1500Hz. TotalFIFO utama575neverreceived dan253late. Priority18run5040/5040on-time. Teman melaporkan575dropDataR8->R10;receiving team belum memperoleh fullrawsweep untuk mencocokkan ulang semuanya. Rawdelapanpilot tersedia dan116missingpilot benar-benar cocok ke dropData;pisahkan cohort.
+
+Pada1500Hz,rata-rata9checkpoint x3draw:GRU recallS3 FIFO0,0667->Priority1,0000,sedangkan FPRS2 0,0463->0,1003. Graph+GRU recallS3 0,9778->1,0000 tetapi FPRS2 0,4568->0,4676. Ini deskriptif lintasvarian/seed, bukan27episode independen atau satu confusion matrix. Tampilkan variasi perinput/run dalam paper. Biaya relatif backgroundgoodput sekitar0,0030-0,0041;completion/fairness tidak seragam. Scheduled causal latency minimum1,25s,bukan CPU/inference/alertlatency. Miss dan alarm setelah attackstop tetap dilaporkan.
+
+Transfer audit:54snapshot input cocok secara kausal;18model direplay dari weights menghasilkan23328prediksi tanpa keputusan berbeda,maxdelta7,15e-7. Delapanpilotraw lolos replayqueue/wire/payload. Rawcampaignutama,manifesttraining,OOF/history/foldplans,dependency/buildlog/binaryhistoris masih belum lengkap. Hashbinary tertulis bukan verifikasi payloadbinary atau keterkaitan perrun.
+
+Lanjutkan penulisan dan audit klaim. Raw lengkap bukan syarat mutlak mulai menulis;gunakan subset relevan atau batasi klaim bila bukti tidak tersedia. Tidak ada kebutuhan otomatis simulasiMint,trainingulang,retuning atau membukasealedtest. Paper tidak boleh mengklaim IFA sendiri menyebabkan reportloss,Priority selalu meningkatkan specificity,keunggulanGNN,atau generalisasi lintastopologi. Pembanding langsung QoS/prioritization perlu diperiksa sebelum klaim novelty final. Literatur lokal telah bertambah menjadi46PDF dari50record;paket publik literatur di bawah tetap snapshot historis dan tidak mendistribusikan PDF berhakcipta.
+
+## 1. Riwayat tujuan dan pertanyaan kerja, 17 Oktober
 
 Proyek meneliti deteksi Interest Flooding Attack (IFA) pada Named Data Networking (NDN) dengan agent pengukuran pada router dan detektor terpusat. Pertanyaan kerja: **bagaimana ketersediaan dan keterlambatan report router memengaruhi kemampuan detektor berbasis graf mendeteksi episode IFA sebelum deadline, pada false alarm yang sebanding?**
 

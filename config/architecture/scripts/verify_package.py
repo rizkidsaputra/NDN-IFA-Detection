@@ -61,7 +61,8 @@ def verify(write_manifest=False):
            r'\b(?:192\.168|172\.(?:1[6-9]|2\d|3[01]))\.\d{1,3}\.\d{1,3}\b',
            r'(?i)(?:[a-z]:[\\/](?:Users|MBC)[\\/]|/h[o]me/[^/\s]+/)']
     for f in published:
-        if f.suffix=='.png': continue
+        # Checksum binary model payloads above; do not decode them as UTF-8 prose.
+        if f.suffix in {'.png','.pt','.joblib'}: continue
         text=f.read_text(encoding='utf-8-sig')
         assert not any(re.search(pattern,text) for pattern in risky), f'Private access/path pattern: {f.name}'
     literature=recount(); graph=analyze()
@@ -93,7 +94,7 @@ def verify(write_manifest=False):
     ifa_process=subprocess.run([sys.executable,str(ifa_script)],capture_output=True,text=True)
     assert ifa_process.returncode==0,ifa_process.stderr or ifa_process.stdout
     ifa_validation=json.loads(ifa_process.stdout)
-    return {'status':'PASS','date':'2026-10-17','manifest_files':len(expected),'portable_local_links':local_links,
+    return {'status':'PASS','date':'2026-10-20','manifest_files':len(expected),'portable_local_links':local_links,
             'private_access_pattern_scan':'PASS','reference_input_hashes':'PASS','reference_evidence_unchanged':True,
             'reference_runtime_checks_recomputed':len(validation['checks']),
             'consumer_data_counts':{r:v['events']['data'] for r,v in validation['consumers'].items()},

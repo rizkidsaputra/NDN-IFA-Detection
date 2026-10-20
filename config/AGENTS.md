@@ -4,7 +4,7 @@ Read `PROJECT_CONTEXT.md` first, then `architecture/README.md`. These files are 
 
 ## Scope and evidence
 
-- The verified implementation includes the benign pilot, router agents, pull collector, IFA mechanism and benign-burst controls. The pinned ndn-cxx adapter requires the documented single-wakeup scheduler patch. Twelve conditions passed on Mint; old capped attempts remain historical incomplete evidence. GraphSAGE+GRU, report impairments, final datasets and ML evaluation are not implemented.
+- The public simulator package includes the benign pilot, router agents, pull collector, IFA mechanism and benign-burst controls. The pinned ndn-cxx adapter requires the single-wakeup scheduler patch. Offline ML evaluation has subsequently been performed in separate campaigns. The repository now includes an offline monitoring replay module and one GraphSAGE+GRU Mask+Age seed11 bundle, but not complete training data or the full FIFO-Priority stress campaign. Read PROJECT_CONTEXT.md for current evidence and distinguish it from the historical pilot.
 - R1 through R10 are all forwarding routers. M/P/C1/C2/C3/A1/A2 are separate endpoint nodes. Do not add R5-R6 or substitute historical seven-router illustrations.
 - Do not reuse old implementations or datasets as current results. This package does not require access to the author's workstation or archived project.
 - Collector features must come only from report Data packets that have arrived. Direct NFD/trace access is for agents or independent audit, never a collector shortcut.

@@ -2,6 +2,8 @@
 
 Eksperimen deteksi **Interest Flooding Attack (IFA)** pada topologi NDN sepuluh router. Router mengirim telemetry sebagai paket Data NDN ke collector terpusat; telemetry yang benar-benar tersedia pada deadline kemudian dipakai oleh detector machine learning (ML).
 
+**Arah penelitian, 20 Oktober 2026:** dampak gangguan report saat congestion serta manfaat dan trade-off prioritas pengiriman monitoring. Mulai dari [RQ, hasil FIFO-Priority dan status audit terbaru](RESEARCH_STATUS.md). Campaign ini berbeda dari evaluasi ML lokal sebelumnya.
+
 ## Status implementasi
 
 ML **sudah diimplementasikan, dilatih, dan diuji** memakai dataset yang dihasilkan topologi ini. Integrasinya saat ini bersifat **offline**:
@@ -12,7 +14,7 @@ topologi ndnSIM -> report NDN -> dataset kausal -> central detector ML -> evalua
 
 Model belum berjalan sebagai alarm real-time di dalam proses ndnSIM. Jadi, jangan menulis bahwa router atau collector sudah melakukan inferensi online saat simulasi berlangsung.
 
-Mulai dari [Dokumentasi ML dan topologi](ML_TOPOLOGY_PIPELINE.md). Dokumen itu menjelaskan hubungan topologi dengan GraphSAGE+GRU, bentuk data, pembagian dataset, protokol test, hasil, dan batas klaim paper.
+[Dokumentasi ML dan topologi](ML_TOPOLOGY_PIPELINE.md) menjelaskan evaluasi lokal sebelumnya. Repository juga memiliki modul replay offline dan satu bundle GraphSAGE+GRU Mask+Age seed11; ini belum merupakan paket reproduksi lengkap campaign FIFO-Priority atau training ML.
 
 ## Berkas pengujian simulator
 
@@ -34,6 +36,7 @@ Kedua konfigurasi ini adalah smoke test simulator, bukan test set ML final.
 
 ## Dokumentasi
 
+- [Arah paper, dua RQ, FIFO-Priority dan batas bukti](RESEARCH_STATUS.md)
 - [Alur topologi ke detector ML dan hasil final](ML_TOPOLOGY_PIPELINE.md)
 - [Quick start dua pengujian simulator](IFA_QUICKSTART.md)
 - [Panduan membangun lab](config/LAB_GUIDE.md)
@@ -42,5 +45,7 @@ Kedua konfigurasi ini adalah smoke test simulator, bukan test set ML final.
 - [Dokumentasi teknis dan literatur](config/architecture/README.md)
 
 ## Kesimpulan objektif
+
+Pada campaign prioritization, Priority menjaga report tepat waktu dan memulihkan sensitivitas GRU pada workload yang diuji, dengan biaya goodput background terukur. False alarm tetap menjadi masalah, terutama pada model graf; telemetry lengkap belum menjamin deteksi yang spesifik terhadap IFA.
 
 Telemetry router dapat mendeteksi aktivitas IFA dengan sangat baik pada domain simulasi tetap ini. Namun, GraphSAGE+GRU tidak mengungguli baseline tabular sederhana, dan hasil satu topologi tidak membuktikan generalisasi lintas topologi. Report yang hilang pada dataset muncul ketika background traffic aktif; hasil ini bukan bukti bahwa IFA sendirian menyebabkan report loss.

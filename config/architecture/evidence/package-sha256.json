@@ -1,7 +1,7 @@
 {
   ".gitattributes": "605906aec7e338324ebb1ae7c220251be65e8bb2488500ddd2cf8b9d2078ca7d",
   ".gitignore": "fe7e2a1834c6dea13bcf1c03ab67c2f2e9eec67a9fe292f4ba3840fe2b89d589",
-  "AGENTS.md": "aca7203120fe4ee45f3fd7e6113302496778e75bfca87012013eccd358cbd327",
+  "AGENTS.md": "3a918daf8f7d9cc01e2bad4a2449d2186d76410b53933658d7735b166b8eca73",
   "architecture/01-arsitektur.md": "e6631a87281f8181be0160136bbb98f0be8efbcda773f311c150f8c481242705",
   "architecture/02-alasan-desain-dan-literatur.md": "f0bbedb25eb33cc871d572c4258bea563c9f3e480036c28ce905f5d22df99236",
   "architecture/03-reproduksi.md": "2ee12314e9c15e2534feba5ffd80c3859c73649ecce3c19be4547c6fa2388cd5",
@@ -102,6 +102,13 @@
   "architecture/ndnsim/ifa-pilot/scripts/run_scheduler_check.sh": "5f833da47e01f49384fc5403a88c8378bd36f8f08249e4c68f87fa35d3a79a3c",
   "architecture/ndnsim/ifa-pilot/scripts/validate_ifa.py": "5e45860f710a9f89179e751b8ae647cbcb6e921c438dd6be94f3a9f789b668cc",
   "architecture/ndnsim/ifa-pilot/scripts/verify_reference.py": "4340c3081ac323e2489b398adef3fb2a2d94951952934b88cc3f7184752b785a",
+  "architecture/ndnsim/monitoring/artifacts/COMPLETE.json": "18a397ff3b102bee1630c5bf1af8717180f887704c6262dbc6d75f73998453f7",
+  "architecture/ndnsim/monitoring/artifacts/graph.json": "316f99c2e73ce088aeb38a3c980b4f560ebff1efbc66af5651150854d49c03a7",
+  "architecture/ndnsim/monitoring/artifacts/metadata.json": "06e7b6daf8f58964ed6b91bb02ce92c0406d213d60e1cc4aa130c420ab39abbc",
+  "architecture/ndnsim/monitoring/artifacts/model.pt": "a49bbd1d9c862d69dece72dbd7dc00243790258886c2d5264aa7922c7ab405c8",
+  "architecture/ndnsim/monitoring/artifacts/preprocessor.joblib": "2505f7b36e499bb6ee4dc34b7f97108d2cbabbabe949c7600fbb85e3cdeb0203",
+  "architecture/ndnsim/monitoring/graph_detector.py": "2e8073be1eab01dbec18eaf96bb0d8cea7dac8190b73637c9398ea8789d27aeb",
+  "architecture/ndnsim/monitoring/replay_inference.py": "8d3858a12c1d1f57657af7168a27bed81879fe289c46bfc3648dc4d72ec5856e",
   "architecture/ndnsim/README.md": "d7591414d72f38921d42419607ac04d9058a025bf2a2c9c35eb7f6605c7f29cd",
   "architecture/ndnsim/scenarios/benign-tree.cpp": "e3d9e9409eda1921d43e94e8ef16301046690ae8eb9292282c39170443e32ca7",
   "architecture/ndnsim/scripts/bootstrap_mint.sh": "34dc38cdeee9ce3dbfdbde21f6bb964eea827b877f5adcd1e6cb65505149017e",
@@ -111,8 +118,8 @@
   "architecture/README.md": "669a8637def037dcb7c05ccc072b89ce24ac7f2222294a20c1c6a8ecdce1912c",
   "architecture/scripts/analyze_topology.py": "487d6cff1978b2b2aebc340221106cb52b83f2b9793aae73194c4963e005fe0d",
   "architecture/scripts/recount_literature.py": "9a61e598cf1cfff34198b5d7bb867d21daa9887ca240dc9b2fa81572c05f0704",
-  "architecture/scripts/verify_package.py": "e6e952ebb12ef7f309a709f13534be969eb41abac454f71db9d8d06dc5aaca33",
+  "architecture/scripts/verify_package.py": "c6b0ad664bb23cf9adb95cf6bdbf156c41a93f18991e4eb9d2a8222eefa82552",
   "LAB_GUIDE.md": "7c97198e3251c61b542bc2ddc9208f5680be26df38bc158b2e0ab26e16f86ca7",
-  "PROJECT_CONTEXT.md": "b808690a999ecaa534741073d2baf044dbe1dff8563fce08a4334cf99094a1c8",
+  "PROJECT_CONTEXT.md": "4f9d1054080a2b3f57faedf7047d4264d083445bd9c4aa428a097e0d07045594",
   "README.md": "ebd278d606885ed99a11a6dd9a1e3bfc5a477db73e260b41f07e65eaff09ecc9"
 }

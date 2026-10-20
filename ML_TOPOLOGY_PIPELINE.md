@@ -1,5 +1,7 @@
 # Implementasi ML pada Topologi NDN
 
+**Cakupan dokumen:** evaluasi lokal v3+v4 yang telah menyelesaikan one-shot test. Arah paper terbaru dan campaign FIFO-Priority terpisah dijelaskan pada [status penelitian](RESEARCH_STATUS.md). Sequence20, split19/8/4 dan lima seed di dokumen ini bukan protokol campaign teman yang memakai sequence5, split11/2/4 dan tiga seed.
+
 Dokumen ini adalah pintu masuk utama untuk memahami hubungan antara simulator, telemetry router, dataset, dan detector ML. Ringkasnya: **ML sudah memakai data dari topologi sepuluh router, tetapi belum ditanam sebagai inferensi real-time di dalam ndnSIM.**
 
 ## 1. Apa yang sudah diimplementasikan?
@@ -183,9 +185,9 @@ Klaim yang tidak didukung:
 - IFA sendiri menyebabkan congestion atau report loss;
 - empat family pada test cukup untuk generalisasi luas.
 
-## 10. Fokus paper yang disarankan
+## 10. Fokus evaluasi lokal sebelumnya
 
-Paper sebaiknya berfokus pada integrasi metodologis berikut:
+Evaluasi lokal ini mendukung pembahasan metodologis berikut; fokus paper aktif kini mengikuti RQ monitoring dan prioritization pada dokumen status penelitian:
 
 1. topologi NDN sepuluh router dan agent pengukuran lokal;
 2. report monitoring yang dikirim sebagai Data NDN;
@@ -197,4 +199,4 @@ Paper sebaiknya berfokus pada integrasi metodologis berikut:
 
 ## 11. Status artefak publik
 
-Repository ini memuat source simulator, runner, konfigurasi, dan dokumentasi hubungan ML-topologi. Dataset final, checkpoint, dan paket pipeline ML masih berada pada workspace penelitian aktif dan belum dimasukkan ke repository publik ini. Karena itu, dokumentasi ini menerangkan hasil yang telah divalidasi, tetapi clone publik saat ini belum merupakan paket reproduksi training ML lengkap.
+Repository ini memuat source simulator, runner, konfigurasi dan dokumentasi. Commit3499c7a juga menambahkan modul replay offline serta satu checkpoint GraphSAGE+GRU Mask+Age seed11 dari campaign teman. Checkpoint itu bukan model terpilih evaluasi lokal v3+v4 ini. Dataset dan paket training/evaluasi lengkap belum dipublikasikan; clone publik belum mereproduksi training ML atau seluruh campaign FIFO-Priority.
