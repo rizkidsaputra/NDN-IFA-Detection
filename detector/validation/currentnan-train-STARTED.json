@@ -1,0 +1,39 @@
+{
+  "status": "STARTED",
+  "mode": "selected",
+  "kinds": [
+    "histgb",
+    "xgboost",
+    "lightgbm"
+  ],
+  "seeds": [
+    11
+  ],
+  "representation": "currentnan",
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "torch": "2.14.1+cpu",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "catboost": "1.2.10",
+    "missing_distribution_metadata": [
+      "xgboost"
+    ]
+  },
+  "code": {
+    "models.py": "cb82d047e197363da6a468cb9106da372e5bd009dec302d63d47d168439272c9",
+    "locked_preprocessing.py": "1a865a5aa1f5217e6d8fc92640f1f13e0f5992561804bca5109d744453cab908",
+    "common.py": "8c7461cd1bb3ba9054da245ce670dfb0ca388be2033223d5370e1cc243eb83d3",
+    "train.py": "6b67bf7241dc9d77c429d4285bedd8c1f83f05f05cbec286e8487428ed508981",
+    "test.py": "9abe5eecb7c531be5df86278bbdfb8cb69495b0ba6bfa89728120124bfb3da03",
+    "replay_online.py": "33649db4453915cf12566d139055b5e2f7691579d6246df979346fcd3a1fdbc2",
+    "presets.json": "fe39c4b82dc783c58706234ab2064610375886374b8e5e3641a9b0b32a300722",
+    "DATASET.json": "c349857a3fdfb3b3e11da0ff784fdcacaaa1ad0277e09ca05a50d498de7e0596"
+  },
+  "test_scored": false,
+  "selected_mode": "Configurations already selected in original validation; no new grid in selected mode"
+}

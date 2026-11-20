@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "runs": 384,
+  "workload_draws": 96,
+  "split_draws": {
+    "train": 32,
+    "validation": 16,
+    "test": 48
+  },
+  "checks": [
+    "exact matched quartet excluding attack and policy",
+    "independent RNG streams for background/attack/burst",
+    "attacker x burst balanced within every partition",
+    "family split before sequences",
+    "96 distinct schedules"
+  ],
+  "protocol_sha256": "3516ac757662d7cd83442460adbc8965d5c037fb26cb5858732c796ac91e44be"
+}

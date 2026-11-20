@@ -1,0 +1,18 @@
+{
+  "files": {
+    "train.npz": "82f172157f90a4b8139da39c60f6bae87e5fe1bfb7a0f870868f699f70c4dfd5",
+    "test.npz": "82182a60ad718b2940fe902d607f6381d7a4471666b8f1f4cd3f7b81d99fb648",
+    "validation.npz": "98973b6d67b1ade97681ef4ce57eb1d79d6a3c93c76bd2ea7880d92cd775be04"
+  },
+  "counts": {
+    "train": 3072,
+    "validation": 1536,
+    "test": 4608
+  },
+  "families": {
+    "train": 32,
+    "validation": 16,
+    "test": 48
+  },
+  "provenance": "confirmation-20261024; original already-observed cohort"
+}

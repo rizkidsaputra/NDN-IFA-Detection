@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "steps": [
+    {
+      "name": "original-test",
+      "exit": 0,
+      "seconds": 10.838447804999305
+    },
+    {
+      "name": "retrained-test",
+      "exit": 0,
+      "seconds": 10.38714561300003
+    },
+    {
+      "name": "grid-test",
+      "exit": 0,
+      "seconds": 3.922727469005622
+    },
+    {
+      "name": "currentnan-train",
+      "exit": 0,
+      "seconds": 30.98773416900076
+    },
+    {
+      "name": "currentnan-test",
+      "exit": 0,
+      "seconds": 5.278350186999887
+    },
+    {
+      "name": "online-replay",
+      "exit": 0,
+      "seconds": 4.573751550997258
+    }
+  ],
+  "previous_validation": {
+    "status": "PASS",
+    "steps": [
+      {
+        "label": "original-test",
+        "exit": 0,
+        "seconds": 10.83984747499926
+      },
+      {
+        "label": "retrain-all",
+        "exit": 0,
+        "seconds": 111.61915592300647
+      },
+      {
+        "label": "retrained-test",
+        "exit": 0,
+        "seconds": 10.539575240007252
+      },
+      {
+        "label": "histgb-grid",
+        "exit": 0,
+        "seconds": 151.48056233399257
+      },
+      {
+        "label": "histgb-grid-test",
+        "exit": 0,
+        "seconds": 4.023546199998236
+      },
+      {
+        "label": "online-replay",
+        "exit": 0,
+        "seconds": 4.724548233003588
+      }
+    ],
+    "started": 1792849617.8239663,
+    "package_files": {
+      "verify_files.py": "e9f606a6616f56c0c73b39ed3a2e59e0a044010866255663bd0a287386c2c106",
+      "validate_package.py": "22c16c573ff672f6686e66283ffc4d10e12b2268934d6d3aed46ee1cdd88ab28",
+      "locked_preprocessing.py": "1a865a5aa1f5217e6d8fc92640f1f13e0f5992561804bca5109d744453cab908",
+      "replay_online.py": "e4c6384189e64b34348cc576e802f259c6f2b76199bddef3d5e3868523d0204b",
+      "models.py": "cb82d047e197363da6a468cb9106da372e5bd009dec302d63d47d168439272c9",
+      "test.py": "7b609a5e083a99486ea9b072d485d93ee2570c712639ddc72a1cc5749336d0b4",
+      "train.py": "6b67bf7241dc9d77c429d4285bedd8c1f83f05f05cbec286e8487428ed508981",
+      "common.py": "8c7461cd1bb3ba9054da245ce670dfb0ca388be2033223d5370e1cc243eb83d3"
+    },
+    "original_reference": {
+      "status": "PASS",
+      "rows": 46080,
+      "max_score_difference": 5.551115123125783e-17,
+      "decision_mismatch": 0
+    },
+    "retrained_predictions": 46080,
+    "grid_fits": 8,
+    "online_replay": {
+      "status": "PASS",
+      "rows": 1920,
+      "max_score_difference": 5.960464477539062e-07,
+      "decision_mismatch": 0,
+      "same_as_pilot": true,
+      "mode": "OFFLINE replay of recorded pilot inputs; no new online timing or network experiment"
+    },
+    "finished": 1792849911.0579777
+  },
+  "source_hashes": {
+    "verify_files.py": "e9f606a6616f56c0c73b39ed3a2e59e0a044010866255663bd0a287386c2c106",
+    "locked_preprocessing.py": "1a865a5aa1f5217e6d8fc92640f1f13e0f5992561804bca5109d744453cab908",
+    "replay_online.py": "33649db4453915cf12566d139055b5e2f7691579d6246df979346fcd3a1fdbc2",
+    "models.py": "cb82d047e197363da6a468cb9106da372e5bd009dec302d63d47d168439272c9",
+    "test.py": "9abe5eecb7c531be5df86278bbdfb8cb69495b0ba6bfa89728120124bfb3da03",
+    "validate_final.py": "8245e09f1d6628abfe0b76bba9ec4c4b72085249bff1e42e0a6b30ae65d825ae",
+    "train.py": "6b67bf7241dc9d77c429d4285bedd8c1f83f05f05cbec286e8487428ed508981",
+    "common.py": "8c7461cd1bb3ba9054da245ce670dfb0ca388be2033223d5370e1cc243eb83d3"
+  },
+  "original_reference": {
+    "status": "PASS",
+    "rows": 46080,
+    "max_score_difference": 2.220446049250313e-16,
+    "decision_mismatch": 0
+  },
+  "online_replay": {
+    "status": "PASS",
+    "rows": 1920,
+    "max_score_difference": 5.960464477539062e-07,
+    "decision_mismatch": 0,
+    "same_as_pilot": true,
+    "mode": "OFFLINE replay of recorded pilot inputs; no new online timing or network experiment"
+  },
+  "reporting_change_preserves_main_metrics": true,
+  "currentnan_checkpoints": 3
+}

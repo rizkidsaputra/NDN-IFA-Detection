@@ -1,104 +1,80 @@
-# Quick Start: Menjalankan Baseline dan IFA Ringan
+# Quick Start: ndnSIM Simulation & Detector Evaluation
 
-Dokumen ini dapat langsung disalin ke Outline. Tujuannya menjelaskan lokasi berkas dan dua perintah pengujian tanpa mengharuskan pembaca menelusuri seluruh repository.
+This guide provides step-by-step commands to run:
+1. **Offline ML Model Verification & Evaluation** (Windows or Linux, no simulator needed).
+2. **ndnSIM Stack Build & Simulator Smoke Tests** (Ubuntu 24.04 / Linux Mint 22.x).
+3. **Reference Package & Online Artifact Audits**.
 
-Dokumen ini khusus untuk **smoke test simulator**. Untuk penjelasan bagaimana hasil topologi dipakai oleh detector ML, baca [Implementasi ML pada Topologi NDN](ML_TOPOLOGY_PIPELINE.md). Dua run di bawah bukan train/test set ML final.
+---
 
-## Lokasi berkas
+## 1. Offline ML Evaluation (No ndnSIM Required)
 
-Ketiga berkas **sudah tersedia di branch `main`**, tetapi tidak berada di root repository.
-
-| Kegunaan | Path di repository | Tautan GitHub |
-|---|---|---|
-| Runner simulasi | `config/architecture/ndnsim/ifa-pilot/scripts/run_ifa.sh` | [Buka runner](config/architecture/ndnsim/ifa-pilot/scripts/run_ifa.sh) |
-| Kondisi pembanding tanpa attacker aktif | `config/architecture/ndnsim/ifa-pilot/config/ifa-base-00000-s1.json` | [Buka konfigurasi baseline](config/architecture/ndnsim/ifa-pilot/config/ifa-base-00000-s1.json) |
-| IFA ringan 50 Interest/detik | `config/architecture/ndnsim/ifa-pilot/config/ifa-atk1-00050-s1.json` | [Buka konfigurasi IFA](config/architecture/ndnsim/ifa-pilot/config/ifa-atk1-00050-s1.json) |
-
-Struktur singkatnya:
-
-```text
-NDN-IFA-Detection/
-└── config/
-    └── architecture/
-        └── ndnsim/
-            └── ifa-pilot/
-                ├── config/
-                │   ├── ifa-base-00000-s1.json
-                │   └── ifa-atk1-00050-s1.json
-                └── scripts/
-                    └── run_ifa.sh
-```
-
-## Perintah lengkap dari awal
-
-Jalankan di Ubuntu 24.04 atau Linux Mint 22.x:
+Requires Python 3.11 or 3.12. The 9,216-row offline dataset and 10 frozen model checkpoints are bundled inside [`detector/`](detector/README.md).
 
 ```bash
-git clone https://github.com/rizkidsaputra/NDN-IFA-Detection.git
-cd NDN-IFA-Detection/config/architecture/ndnsim
-bash scripts/bootstrap_mint.sh
+# Create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate        # Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 
+# Verify SHA-256 checksums of all bundled files
+cd detector
+python verify_files.py
+
+# Evaluate the 10 frozen checkpoints on the 4,608-row test set
+python test.py --models-dir pretrained --out results/test-check --reference reference/expected-original-predictions.csv
+```
+
+When successful, `verify_files.py` prints `PACKAGE_FILES_PASS`, and `test.py` writes `summary.csv`, `predictions.csv`, `metrics-per-family-seed.csv`, and `receipt.json` under `detector/results/test-check/`.
+
+---
+
+## 2. Building ndnSIM & Running Simulator Smoke Tests (Linux)
+
+On Ubuntu 24.04 or Linux Mint 22.x, `bootstrap_mint.sh` installs system prerequisites, checks out `ns-3`, `ndnSIM`, `NFD`, and `ndn-cxx` at the pinned commits ([`ndnsim/docs/stack-lock.json`](ndnsim/docs/stack-lock.json)), applies the GCC 13 compatibility and `ndn-cxx` single-wakeup scheduler patches, and compiles the simulator:
+
+```bash
+cd config/architecture/ndnsim
+bash scripts/bootstrap_mint.sh
+```
+
+Once built, run the two simulator smoke tests (benign baseline vs. light 50 Interest/s IFA):
+
+```bash
 cd ifa-pilot
 bash scripts/run_ifa.sh config/ifa-base-00000-s1.json
 bash scripts/run_ifa.sh config/ifa-atk1-00050-s1.json
 ```
 
-`bootstrap_mint.sh` hanya diperlukan untuk pemasangan baru. Jika simulator sudah berhasil dipasang dari repository ini, masuk langsung ke folder `ifa-pilot` dan jalankan dua perintah terakhir.
+### Expected Smoke-Test Output
 
-## Jika repository sudah pernah di-clone
-
-Clone lama mungkin belum memuat dokumentasi terbaru. Perbarui branch `main`:
-
-```bash
-cd NDN-IFA-Detection
-git pull --ff-only origin main
-git branch --show-current
-git rev-parse --short HEAD
-```
-
-Pastikan branch yang tampil adalah `main`. Lalu periksa berkas:
-
-```bash
-test -f config/architecture/ndnsim/ifa-pilot/scripts/run_ifa.sh &&
-test -f config/architecture/ndnsim/ifa-pilot/config/ifa-base-00000-s1.json &&
-test -f config/architecture/ndnsim/ifa-pilot/config/ifa-atk1-00050-s1.json &&
-echo "Semua file IFA tersedia"
-```
-
-Pesan terakhir hanya akan dicetak jika ketiga pemeriksaan sebelumnya berhasil.
-
-## Apa perbedaan kedua konfigurasi?
-
-`ifa-base-00000-s1.json` adalah pembanding 30 detik tanpa attacker aktif. `ifa-atk1-00050-s1.json` memakai topologi dan trafik normal yang sama, lalu mengaktifkan A1 pada laju 50 Interest/detik selama detik 5 sampai sebelum detik 10. Totalnya 250 Interest serangan unik.
-
-Keduanya memakai seed dan parameter jaringan yang sama agar perbandingannya terkontrol. Konfigurasi IFA ringan menaikkan PIT, tetapi pada hasil acuan tidak menghilangkan Data normal maupun report monitoring.
-
-## Hasil yang diharapkan
-
-| Pemeriksaan | Baseline | IFA ringan |
+| Validator Check | Baseline (`ifa-base-00000-s1`) | Light IFA (`ifa-atk1-00050-s1`) |
 |---|---:|---:|
-| Status validator | PASS | PASS |
-| Request serangan mencapai P | 0 | 250 dari 250 |
-| Puncak PIT R1 | 1 | 51 |
-| Data normal diterima | 345/345 | 345/345 |
-| Report tepat waktu | 280/280 | 280/280 |
+| `validation.json` status | `PASS` | `PASS` |
+| Attack Interests reaching sink at `P` | 0 | 250 / 250 |
+| Peak `PIT` entries at router `R1` | 1 | 51 |
+| Regular consumer Data received (`C1`..`C3`) | 345 / 345 | 345 / 345 |
+| Monitoring reports received on time at `M` | 280 / 280 | 280 / 280 |
 
-PASS berarti simulasi dan bukti keluarannya konsisten dengan konfigurasi. PASS tidak berarti serangan berhasil melumpuhkan jaringan dan tidak berarti model ML telah mendeteksi serangan.
-
-## Di mana hasil run disimpan?
-
-Runner membuat folder berikut:
-
-```text
-config/architecture/ndnsim/ifa-pilot/runs/<run-id>/
-```
-
-Baca `validation.json` terlebih dahulu. Jika terjadi kegagalan, periksa `simulator.log`, `resources.txt`, dan `exit-code.txt`. Runner menolak menimpa hasil lama. Untuk pengulangan, berikan label baru:
+Each run is written to `config/architecture/ndnsim/ifa-pilot/runs/<run-id>/`. The runner refuses to overwrite an existing run directory; pass a custom run label to repeat a run:
 
 ```bash
-bash scripts/run_ifa.sh config/ifa-atk1-00050-s1.json latihan-kedua
+bash scripts/run_ifa.sh config/ifa-atk1-00050-s1.json test-run-2
 ```
 
-## Catatan keamanan dan batas klaim
+---
 
-Eksperimen berjalan seluruhnya di simulator pada laptop. Script tidak menyerang jaringan Internet. Uji ini adalah pilot terkontrol, bukan dataset final dan bukan bukti bahwa IFA selalu menyebabkan congestion, kegagalan layanan, atau report loss.
+## 3. Online Detection Scenario (`FIFO` vs. `Priority + Push-Out`)
+
+The core files for the 720-run online campaign are located at:
+* **ndnSIM C++ Scenario:** [`ndnsim/scenarios/rq1-online-tree.cc`](ndnsim/scenarios/rq1-online-tree.cc)
+* **Live Detector Process (UNIX Datagram Socket):** [`detector/detector.py`](detector/detector.py)
+* **Runner & Verifier:** [`detector/runner.py`](detector/runner.py) and [`detector/verify.py`](detector/verify.py)
+* **Run Plan & Case Configs:** [`configs/plan.json`](configs/plan.json) and [`configs/cases/`](configs/families.json)
+* **Summary Metrics & Compute Cost:** [`results/metrics-fresh-macro.csv`](results/metrics-fresh-macro.csv) and [`results/COMPUTE-COST.csv`](results/COMPUTE-COST.csv)
+
+To verify the reference documentation and evidence checksums offline without running a simulation:
+
+```bash
+python config/architecture/scripts/verify_package.py
+```

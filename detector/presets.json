@@ -1,0 +1,107 @@
+{
+  "logistic-locf": {
+    "configuration": {
+      "C": 1
+    },
+    "original_threshold": 0.8257440328598022,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "rf-locf": {
+    "configuration": {
+      "trees": 400,
+      "minimum": 5
+    },
+    "original_threshold": 0.5562573827856727,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "histgb-locf": {
+    "configuration": {
+      "iterations": 400,
+      "minimum": 20
+    },
+    "original_threshold": 0.48723809050647016,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "gbdt-locf": {
+    "configuration": {
+      "iterations": 400,
+      "minimum": 40
+    },
+    "original_threshold": 0.5719019212475082,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "adaboost-locf": {
+    "configuration": {
+      "iterations": 400,
+      "minimum": 1
+    },
+    "original_threshold": 0.7041607104559277,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "xgboost-locf": {
+    "configuration": {
+      "iterations": 200,
+      "leaves": 7
+    },
+    "original_threshold": 0.5991024971008301,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "lightgbm-locf": {
+    "configuration": {
+      "iterations": 400,
+      "minimum": 10
+    },
+    "original_threshold": 0.41849700498053816,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "catboost-locf": {
+    "configuration": {
+      "iterations": 200,
+      "depth": 6
+    },
+    "original_threshold": 0.5118896285264125,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "gru-locf": {
+    "configuration": {
+      "lr": 0.001,
+      "dropout": 0.0,
+      "hidden": 32
+    },
+    "original_threshold": 0.5476921796798706,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "graph-locf": {
+    "configuration": {
+      "lr": 0.001,
+      "dropout": 0.15,
+      "hidden": 64
+    },
+    "original_threshold": 0.676605224609375,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "histgb-currentnan": {
+    "configuration": {
+      "iterations": 400,
+      "minimum": 40
+    },
+    "original_threshold": 0.7747807463765395,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "xgboost-currentnan": {
+    "configuration": {
+      "iterations": 400,
+      "leaves": 15
+    },
+    "original_threshold": 0.7318402528762817,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  },
+  "lightgbm-currentnan": {
+    "configuration": {
+      "iterations": 400,
+      "minimum": 40
+    },
+    "original_threshold": 0.6953645296398149,
+    "source": "Original validation-selected configuration; not a new grid in selected mode"
+  }
+}

@@ -1,0 +1,21 @@
+kind,policy,burst_on_f1,burst_off_f1,burst_on_fp,burst_off_fp,fp_delta_on_minus_off,burst_on_fn,burst_off_fn,changed_decisions,differences_json
+logistic,fifo,0.4,0.4,1,1,0,2,2,0,[]
+logistic,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.9957259893417358, ""off_score"": 0.05137235298752785, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.9960364699363708, ""off_score"": 0.038591183722019196, ""on_pred"": 1, ""off_pred"": 0}]"
+rf,fifo,0.5714285714285714,0.5714285714285714,2,2,0,1,1,0,[]
+rf,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.7366174686777756, ""off_score"": 0.1094052998071498, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.7589593488527497, ""off_score"": 0.09737085960966613, ""on_pred"": 1, ""off_pred"": 0}]"
+histgb,fifo,0.5,0.5,3,3,0,1,1,0,[]
+histgb,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.712313690010353, ""off_score"": 0.0001639934114589, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.891426827793551, ""off_score"": 0.00011290770494101601, ""on_pred"": 1, ""off_pred"": 0}]"
+gbdt,fifo,0.5714285714285714,0.5714285714285714,2,2,0,1,1,0,[]
+gbdt,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.729627579474578, ""off_score"": 0.0013945495139817215, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.8628279522032646, ""off_score"": 0.0013945495139817215, ""on_pred"": 1, ""off_pred"": 0}]"
+adaboost,fifo,0.3333333333333333,0.3333333333333333,2,2,0,2,2,0,[]
+adaboost,priority,0.8,0.8,0,0,0,1,1,0,[]
+xgboost,fifo,0.5714285714285714,0.5714285714285714,2,2,0,1,1,0,[]
+xgboost,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.7355833053588867, ""off_score"": 0.007682186085730791, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.8331918716430664, ""off_score"": 0.006172535941004753, ""on_pred"": 1, ""off_pred"": 0}]"
+lightgbm,fifo,0.5714285714285714,0.5714285714285714,2,2,0,1,1,0,[]
+lightgbm,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.7945552390375544, ""off_score"": 0.0001380991850235198, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.8590748225523671, ""off_score"": 8.168544864107435e-05, ""on_pred"": 1, ""off_pred"": 0}]"
+catboost,fifo,0.5714285714285714,0.5714285714285714,2,2,0,1,1,0,[]
+catboost,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.7371151496913675, ""off_score"": 0.012200305272464436, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.8920968675232607, ""off_score"": 0.013047659616487281, ""on_pred"": 1, ""off_pred"": 0}]"
+gru,fifo,0.2857142857142857,0.2857142857142857,3,3,0,2,2,0,[]
+gru,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.9750951528549194, ""off_score"": 0.0026274106930941343, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.9828550815582275, ""off_score"": 0.002943440806120634, ""on_pred"": 1, ""off_pred"": 0}]"
+graph,fifo,0,0,0,0,0,3,3,0,[]
+graph,priority,0.75,1.0,2,0,2,0,0,2,"[{""scenario"": ""s2"", ""window"": 19, ""on_score"": 0.847673237323761, ""off_score"": 0.0023466271813958883, ""on_pred"": 1, ""off_pred"": 0}, {""scenario"": ""s3"", ""window"": 19, ""on_score"": 0.8699204325675964, ""off_score"": 0.0024043142329901457, ""on_pred"": 1, ""off_pred"": 0}]"

@@ -1,0 +1,428 @@
+{
+  "created": "2026-10-24T10:17:02Z",
+  "code": {
+    "PROTOKOL.md": "c3a66325896acc1a0535b1f35d3d536baa1192c01da228da453d2abd42e80781",
+    "models.py": "cb82d047e197363da6a468cb9106da372e5bd009dec302d63d47d168439272c9",
+    "experiment.py": "7ca88b11fa0afcd8d06f9caf74ef8ba8a29756472d8b28f121994cffd3e9553a",
+    "reference/historical_models.py": "b921458ee3e268b5dafa17c0eeaeaebdefe78f93e62abb9d5d3347faa68ebc77",
+    "reference/confirmation_pipeline.py": "20ca0419a84995bbbf4bddccb36cad6ae9a0a5c850a068887ce3f5336a632beb",
+    "reference/graph.json": "316f99c2e73ce088aeb38a3c980b4f560ebff1efbc66af5651150854d49c03a7"
+  },
+  "train_sha256": "82f172157f90a4b8139da39c60f6bae87e5fe1bfb7a0f870868f699f70c4dfd5",
+  "validation_sha256": "98973b6d67b1ade97681ef4ce57eb1d79d6a3c93c76bd2ea7880d92cd775be04",
+  "cohort": "already-observed confirmation cohort; exploratory extension",
+  "test_read_for_this_fit": false,
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "sklearn": "1.9.1",
+    "torch": "2.14.1+cpu",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "catboost": "1.2.10"
+  },
+  "grids": {
+    "logistic": [
+      {
+        "C": 0.001
+      },
+      {
+        "C": 0.003
+      },
+      {
+        "C": 0.01
+      },
+      {
+        "C": 0.03
+      },
+      {
+        "C": 0.1
+      },
+      {
+        "C": 1
+      },
+      {
+        "C": 10
+      },
+      {
+        "C": 100
+      }
+    ],
+    "rf": [
+      {
+        "trees": 200,
+        "minimum": 1
+      },
+      {
+        "trees": 200,
+        "minimum": 2
+      },
+      {
+        "trees": 200,
+        "minimum": 5
+      },
+      {
+        "trees": 200,
+        "minimum": 10
+      },
+      {
+        "trees": 400,
+        "minimum": 1
+      },
+      {
+        "trees": 400,
+        "minimum": 2
+      },
+      {
+        "trees": 400,
+        "minimum": 5
+      },
+      {
+        "trees": 400,
+        "minimum": 10
+      }
+    ],
+    "histgb": [
+      {
+        "iterations": 200,
+        "minimum": 10
+      },
+      {
+        "iterations": 200,
+        "minimum": 20
+      },
+      {
+        "iterations": 200,
+        "minimum": 40
+      },
+      {
+        "iterations": 200,
+        "minimum": 80
+      },
+      {
+        "iterations": 400,
+        "minimum": 10
+      },
+      {
+        "iterations": 400,
+        "minimum": 20
+      },
+      {
+        "iterations": 400,
+        "minimum": 40
+      },
+      {
+        "iterations": 400,
+        "minimum": 80
+      }
+    ],
+    "gbdt": [
+      {
+        "iterations": 200,
+        "minimum": 5
+      },
+      {
+        "iterations": 200,
+        "minimum": 10
+      },
+      {
+        "iterations": 200,
+        "minimum": 20
+      },
+      {
+        "iterations": 200,
+        "minimum": 40
+      },
+      {
+        "iterations": 400,
+        "minimum": 5
+      },
+      {
+        "iterations": 400,
+        "minimum": 10
+      },
+      {
+        "iterations": 400,
+        "minimum": 20
+      },
+      {
+        "iterations": 400,
+        "minimum": 40
+      }
+    ],
+    "adaboost": [
+      {
+        "iterations": 200,
+        "minimum": 1
+      },
+      {
+        "iterations": 200,
+        "minimum": 5
+      },
+      {
+        "iterations": 200,
+        "minimum": 20
+      },
+      {
+        "iterations": 200,
+        "minimum": 40
+      },
+      {
+        "iterations": 400,
+        "minimum": 1
+      },
+      {
+        "iterations": 400,
+        "minimum": 5
+      },
+      {
+        "iterations": 400,
+        "minimum": 20
+      },
+      {
+        "iterations": 400,
+        "minimum": 40
+      }
+    ],
+    "xgboost": [
+      {
+        "iterations": 200,
+        "leaves": 7
+      },
+      {
+        "iterations": 200,
+        "leaves": 15
+      },
+      {
+        "iterations": 200,
+        "leaves": 31
+      },
+      {
+        "iterations": 200,
+        "leaves": 63
+      },
+      {
+        "iterations": 400,
+        "leaves": 7
+      },
+      {
+        "iterations": 400,
+        "leaves": 15
+      },
+      {
+        "iterations": 400,
+        "leaves": 31
+      },
+      {
+        "iterations": 400,
+        "leaves": 63
+      }
+    ],
+    "lightgbm": [
+      {
+        "iterations": 200,
+        "minimum": 5
+      },
+      {
+        "iterations": 200,
+        "minimum": 10
+      },
+      {
+        "iterations": 200,
+        "minimum": 20
+      },
+      {
+        "iterations": 200,
+        "minimum": 40
+      },
+      {
+        "iterations": 400,
+        "minimum": 5
+      },
+      {
+        "iterations": 400,
+        "minimum": 10
+      },
+      {
+        "iterations": 400,
+        "minimum": 20
+      },
+      {
+        "iterations": 400,
+        "minimum": 40
+      }
+    ],
+    "catboost": [
+      {
+        "iterations": 200,
+        "depth": 3
+      },
+      {
+        "iterations": 200,
+        "depth": 4
+      },
+      {
+        "iterations": 200,
+        "depth": 5
+      },
+      {
+        "iterations": 200,
+        "depth": 6
+      },
+      {
+        "iterations": 400,
+        "depth": 3
+      },
+      {
+        "iterations": 400,
+        "depth": 4
+      },
+      {
+        "iterations": 400,
+        "depth": 5
+      },
+      {
+        "iterations": 400,
+        "depth": 6
+      }
+    ],
+    "gru": [
+      {
+        "lr": 0.0003,
+        "dropout": 0.0,
+        "hidden": 32
+      },
+      {
+        "lr": 0.0003,
+        "dropout": 0.0,
+        "hidden": 64
+      },
+      {
+        "lr": 0.0003,
+        "dropout": 0.15,
+        "hidden": 32
+      },
+      {
+        "lr": 0.0003,
+        "dropout": 0.15,
+        "hidden": 64
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.0,
+        "hidden": 32
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.0,
+        "hidden": 64
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.15,
+        "hidden": 32
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.15,
+        "hidden": 64
+      }
+    ],
+    "graph": [
+      {
+        "lr": 0.0003,
+        "dropout": 0.0,
+        "hidden": 32
+      },
+      {
+        "lr": 0.0003,
+        "dropout": 0.0,
+        "hidden": 64
+      },
+      {
+        "lr": 0.0003,
+        "dropout": 0.15,
+        "hidden": 32
+      },
+      {
+        "lr": 0.0003,
+        "dropout": 0.15,
+        "hidden": 64
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.0,
+        "hidden": 32
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.0,
+        "hidden": 64
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.15,
+        "hidden": 32
+      },
+      {
+        "lr": 0.001,
+        "dropout": 0.15,
+        "hidden": 64
+      }
+    ]
+  },
+  "pipelines": [
+    [
+      "logistic",
+      "locf"
+    ],
+    [
+      "rf",
+      "locf"
+    ],
+    [
+      "histgb",
+      "locf"
+    ],
+    [
+      "gbdt",
+      "locf"
+    ],
+    [
+      "adaboost",
+      "locf"
+    ],
+    [
+      "xgboost",
+      "locf"
+    ],
+    [
+      "lightgbm",
+      "locf"
+    ],
+    [
+      "catboost",
+      "locf"
+    ],
+    [
+      "gru",
+      "locf"
+    ],
+    [
+      "graph",
+      "locf"
+    ],
+    [
+      "histgb",
+      "currentnan"
+    ],
+    [
+      "xgboost",
+      "currentnan"
+    ],
+    [
+      "lightgbm",
+      "currentnan"
+    ]
+  ]
+}

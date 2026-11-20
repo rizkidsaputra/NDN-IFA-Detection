@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "split": "train",
+      "rows": 3072,
+      "npz_original_hash_match": true,
+      "csv_float32_roundtrip_exact": true,
+      "labels_metadata_match": true
+    },
+    {
+      "split": "validation",
+      "rows": 1536,
+      "npz_original_hash_match": true,
+      "csv_float32_roundtrip_exact": true,
+      "labels_metadata_match": true
+    },
+    {
+      "split": "test",
+      "rows": 4608,
+      "npz_original_hash_match": true,
+      "csv_float32_roundtrip_exact": true,
+      "labels_metadata_match": true
+    }
+  ],
+  "family_split_disjoint": true,
+  "original_npz_unchanged": true
+}

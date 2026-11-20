@@ -1,7 +1,6 @@
 {
   ".gitattributes": "605906aec7e338324ebb1ae7c220251be65e8bb2488500ddd2cf8b9d2078ca7d",
   ".gitignore": "fe7e2a1834c6dea13bcf1c03ab67c2f2e9eec67a9fe292f4ba3840fe2b89d589",
-  "AGENTS.md": "3a918daf8f7d9cc01e2bad4a2449d2186d76410b53933658d7735b166b8eca73",
   "architecture/01-arsitektur.md": "e6631a87281f8181be0160136bbb98f0be8efbcda773f311c150f8c481242705",
   "architecture/02-alasan-desain-dan-literatur.md": "f0bbedb25eb33cc871d572c4258bea563c9f3e480036c28ce905f5d22df99236",
   "architecture/03-reproduksi.md": "2ee12314e9c15e2534feba5ffd80c3859c73649ecce3c19be4547c6fa2388cd5",
@@ -120,6 +119,5 @@
   "architecture/scripts/recount_literature.py": "9a61e598cf1cfff34198b5d7bb867d21daa9887ca240dc9b2fa81572c05f0704",
   "architecture/scripts/verify_package.py": "c6b0ad664bb23cf9adb95cf6bdbf156c41a93f18991e4eb9d2a8222eefa82552",
   "LAB_GUIDE.md": "7c97198e3251c61b542bc2ddc9208f5680be26df38bc158b2e0ab26e16f86ca7",
-  "PROJECT_CONTEXT.md": "4f9d1054080a2b3f57faedf7047d4264d083445bd9c4aa428a097e0d07045594",
   "README.md": "ebd278d606885ed99a11a6dd9a1e3bfc5a477db73e260b41f07e65eaff09ecc9"
 }

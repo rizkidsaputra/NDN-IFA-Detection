@@ -1,202 +1,90 @@
-# Implementasi ML pada Topologi NDN
+# Spatio-Temporal Feature Pipeline & ML Evaluation
 
-**Cakupan dokumen:** evaluasi lokal v3+v4 yang telah menyelesaikan one-shot test. Arah paper terbaru dan campaign FIFO-Priority terpisah dijelaskan pada [status penelitian](RESEARCH_STATUS.md). Sequence20, split19/8/4 dan lima seed di dokumen ini bukan protokol campaign teman yang memakai sequence5, split11/2/4 dan tiga seed.
+This document describes how telemetry reports from the 10 NDN routers are assembled into causal input tensors and evaluated across 10 machine learning model families (both offline via [`detector/test.py`](detector/test.py) and live via [`detector/detector.py`](detector/detector.py)).
 
-Dokumen ini adalah pintu masuk utama untuk memahami hubungan antara simulator, telemetry router, dataset, dan detector ML. Ringkasnya: **ML sudah memakai data dari topologi sepuluh router, tetapi belum ditanam sebagai inferensi real-time di dalam ndnSIM.**
+---
 
-## 1. Apa yang sudah diimplementasikan?
+## 1. From Router Reports to Causal Tensors (`5 x 10 x 13`)
 
-Alur penelitian yang sudah selesai adalah:
-
-```text
-Consumer / attacker
-        |
-        v
-Topologi NDN 10 router -----> Producer
-        |
-        | setiap router mengukur kondisi lokal
-        v
-Report berbentuk Data NDN menuju collector M
-        |
-        | hanya report yang tersedia saat deadline 250 ms
-        v
-Dataset snapshot graf per detik
-        |
-        v
-Central detector ML
-        |
-        v
-Probabilitas / keputusan aktivitas IFA
-```
-
-Dengan demikian, frasa yang tepat untuk paper adalah:
-
-> Detector ML terpusat dilatih dan dievaluasi secara offline menggunakan telemetry kausal yang dikumpulkan dari topologi NDN sepuluh router.
-
-Frasa yang belum boleh dipakai adalah:
-
-> Model telah di-deploy di collector dan mendeteksi serangan secara real-time selama simulasi.
-
-Deployment online itu masih pekerjaan lanjutan.
-
-## 2. Di mana letak ML terhadap topologi?
-
-Topologi fisik yang dipakai model adalah:
+At every 1-second boundary (`w = 1..28`), each router (`R1`..`R10`) serializes 11 NFD measurements into an NDN Data payload:
 
 ```text
-M - R10
-     ├── R8
-     │   ├── R5
-     │   │   ├── R1
-     │   │   └── R2
-     │   └── R6
-     │       └── R3
-     └── R9
-         └── R7
-             └── R4 - P
+router;sequence;window_start;window_end;ready;delta_in_I;delta_out_I;delta_in_D;delta_out_D;delta_in_N;delta_out_N;delta_satisfied;delta_unsatisfied;delta_CS_hit;delta_CS_miss;PIT_entries
 ```
 
-- R1–R10 menjadi sepuluh node graf.
-- Sambungan ant-router menjadi edge graf yang tetap.
-- Setiap router menghasilkan sebelas nilai pengukuran utama per jendela waktu.
-- Collector M meminta report melalui protokol NDN; report dikirim sebagai paket Data NDN.
-- Detector pusat menyusun snapshot `10 router x fitur` dan urutan waktu sepanjang 20 jendela.
-- GraphSAGE memproses hubungan ant-router, sedangkan GRU memproses perubahan ant-waktu.
+At decision cutoff `d_w = w + 0.25 s`, the detector process at collector `M` constructs a `10 routers x 13 channels` frame for window `w` ([`detector/detector.py`](detector/detector.py)):
 
-Consumer meminta konten normal kepada producer P. Attacker mengirim Interest unik yang memiliki rute tetapi sengaja tidak memperoleh Data. Background traffic juga merupakan trafik NDN dan dipakai untuk membuat kondisi benign yang lebih sulit, termasuk congestion pada sebagian workload.
+1. **Channels 0..10 (11 Router Measurements):** Taken from the newest report for that router satisfying `sequence <= w` and `arrival <= d_w`. If the report for window `w` has not arrived by `d_w`, the detector carries forward the most recent eligible report (*Last Observation Carried Forward* / LOCF).
+2. **Channel 11 (`current_mask`):** `1` if the report for window `w` arrived on time by `d_w`, otherwise `0`.
+3. **Channel 12 (`sample_age`):** Time elapsed `d_w - window_end` since the carried sample's window closed (`0.25 s` when on time, or larger when stale).
 
-## 3. Data apa yang masuk ke model?
+Five consecutive frames (`w-4 .. w`) are stacked into a **`5 x 10 x 13`** input sample (starting at `w = 5`, yielding 24 decisions per 30-second run for `w = 5..28`).
 
-Satu keputusan jaringan dibuat setiap satu detik. Untuk setiap router, model memakai sebelas measurement field dari report yang telah tersedia secara kausal. Contohnya mencakup jumlah Interest/Data, ukuran PIT, PIT yang puas/tidak puas, NACK, dan cache hit/miss.
+### Leakage-Free Normalization (*Train-Only Scaling*)
+Feature scaling is locked in [`detector/locked_preprocessing.py`](detector/locked_preprocessing.py) and [`configs/scaler.json`](configs/scaler.json):
+* The 11 measurement channels (`0..10`) and `sample_age` (`12`) are transformed via `log1p(x)` and standardized (`(z - mean) / std`) using statistics computed **strictly from the training split**.
+* `current_mask` (`11`) is kept as a binary `0/1` indicator.
 
-Aturan pentingnya:
+---
 
-- Label berasal dari aktivitas IFA pada jendela keputusan, bukan dari nama konfigurasi yang diberikan kepada model.
-- Waktu absolut, identitas run, kondisi eksperimen, jumlah serangan, tracer masa depan, dan metadata audit tidak dipakai sebagai fitur.
-- Jika report belum tersedia pada deadline 250 ms, input memakai last observation carried forward (LOCF).
-- Varian `Mask` menambahkan penanda tersedia/tidak tersedia.
-- Varian `Mask+Age` juga menambahkan umur sampel terakhir.
-- Normalisasi hanya dipelajari dari train set.
-- Urutan tidak pernah menyeberang dari satu run ke run lain.
+## 2. Ten Model Families Evaluated
 
-Ini disebut dataset **kausal** karena detector hanya melihat informasi yang sudah sampai pada saat keputusan dibuat, bukan report masa depan.
+All model definitions reside in [`detector/models.py`](detector/models.py):
 
-## 4. Dataset dan pembagian evaluasi
+* **Tabular & Boosting Models (Flattened input `5 x 10 x 13 = 650` features):**
+  1. `logistic` -- Logistic Regression
+  2. `rf` -- Random Forest (*paper panel*)
+  3. `histgb` -- Histogram-Based Gradient Boosting (`HistGradientBoostingClassifier`)
+  4. `gbdt` -- Gradient Boosting Decision Trees (`GradientBoostingClassifier`, *paper panel*)
+  5. `adaboost` -- AdaBoost
+  6. `xgboost` -- XGBoost (*paper panel*)
+  7. `lightgbm` -- LightGBM
+  8. `catboost` -- CatBoost
+* **Sequential & Graph-Temporal Models (Structured tensor `(batch, 5, 10, 13)`):**
+  9. `gru` -- GRU-only (*paper panel*): flattens router features per time step (`10 x 13 = 130` features across 5 steps) and models temporal dynamics with a GRU.
+  10. `graph` -- GraphSAGE+GRU (*paper panel*): applies GraphSAGE layers over the 10-router adjacency matrix ([`detector/dataset/graph.json`](detector/dataset/graph.json)) at each time step, aggregates node embeddings via `mean + max` readout pooling, and passes the 5-step sequence through a GRU.
 
-Dataset final lokal v3+v4 berisi:
+### Hyperparameter Selection & Threshold Calibration
+* Each model family was evaluated across 8 hyperparameter candidates ([`detector/presets.json`](detector/presets.json)) on the validation split.
+* A single global classification threshold per checkpoint was selected **on the validation split only** to maximize mean validation recall across rates and policies subject to `all-S2` and `busy-S2` False Positive Rate (FPR) `<= 5%`.
+* Once selected, weights, scaler, and thresholds were frozen ([`detector/pretrained/FREEZE.json`](detector/pretrained/FREEZE.json) and [`configs/registry.json`](configs/registry.json)) and never retuned on the test set or online runs.
 
-| Bagian | Jumlah |
-|---|---:|
-| Workload family | 31 |
-| Run simulasi | 124 |
-| Snapshot jaringan | 36.952 |
-| Baris router | 369.520 |
-| Jendela positif IFA | 4.586 |
+---
 
-Setiap workload family memiliki empat kondisi berpasangan: normal, IFA, background-only, dan IFA+background. Pembagian dilakukan berdasarkan **family**, bukan dengan mengacak baris atau jendela:
+## 3. Offline Evaluation Dataset (9,216 Rows)
 
-| Partisi | Family | Run | Snapshot |
-|---|---:|---:|---:|
-| Train | 19 | 76 | 22.648 |
-| Validation | 8 | 32 | 9.536 |
-| Test | 4 | 16 | 4.768 |
+The offline dataset in [`detector/dataset/`](detector/dataset/README.md) comes from the 384-run confirmation campaign (96 workload families x 4 runs per family: `S2/S3 x FIFO/Priority`, 24 decisions per run):
 
-Cara ini mengurangi kebocoran akibat jendela berurutan yang sangat mirip. Test set hanya dibuka satu kali setelah preprocessing, model, threshold, checkpoint, dan kode dibekukan serta di-hash.
+| Split | Families | Runs | Decision Rows (`5 x 10 x 13`) | NPZ File |
+|---|---:|---:|---:|---|
+| **Train** | 32 (8/rate) | 128 | 3,072 | [`detector/dataset/npz/train.npz`](detector/dataset/npz/train.npz) |
+| **Validation** | 16 (4/rate) | 64 | 1,536 | [`detector/dataset/npz/validation.npz`](detector/dataset/npz/validation.npz) |
+| **Test** | 48 (12/rate) | 192 | 4,608 | [`detector/dataset/npz/test.npz`](detector/dataset/npz/test.npz) |
 
-## 5. Model yang dibandingkan
+Splits are strictly **family-disjoint** so overlapping sliding windows from the same workload never cross between train, validation, and test. Flattened CSV exports are also included in `detector/dataset/csv/`.
 
-Eksperimen tidak hanya menguji GraphSAGE+GRU. Pembanding berikut wajib agar penilaian objektif:
+---
 
-- threshold PIT mean dan PIT max;
-- logistic regression;
-- Random Forest;
-- XGBoost;
-- logistic regression berbasis R4 saja;
-- GRU tanpa graf;
-- GraphSAGE tanpa komponen temporal;
-- GraphSAGE+GRU Plain, Mask, dan Mask+Age.
+## 4. Offline Reproduction Commands
 
-Model dipilih menggunakan family-macro PR-AUC pada validation. Threshold dipilih di validation dan tidak diubah setelah melihat test. Model neural dilaporkan sebagai rerata dan simpangan baku lima seed, bukan seed terbaik saja.
-
-## 6. Hasil one-shot test
-
-Hasil utama test family-disjoint:
-
-| Model | Family-macro PR-AUC | Family-macro F1 | FPR | Episode recall |
-|---|---:|---:|---:|---:|
-| Logistic regression | 1,0000 | 0,9926 | 0,0014 | 1,0000 |
-| XGBoost, dipilih sebelum test | 0,9989 | 0,9912 | 0,0010 | 1,0000 |
-| GraphSAGE+GRU Plain, 5 seed | 0,9967 ± 0,0017 | 0,9602 ± 0,0160 | 0,0079 | 1,0000 |
-| GRU-only Plain, 5 seed | 0,9968 ± 0,0006 | 0,9705 ± 0,0030 | 0,0053 | 1,0000 |
-| Static GraphSAGE, 5 seed | 0,9981 ± 0,0010 | 0,9258 ± 0,0205 | 0,0097 | 1,0000 |
-
-Interpretasinya:
-
-1. Telemetry topologi ini cukup untuk mendeteksi aktivitas IFA pada domain simulasi yang diuji.
-2. GraphSAGE+GRU bekerja, tetapi tidak lebih baik daripada baseline tabular sederhana.
-3. Mask dan sample age tidak memperbaiki metrik pemilihan validation dibanding Plain.
-4. Skor tinggi bukan otomatis bukti model baru lebih unggul; audit menunjukkan tugas pada satu domain ini memang mudah dipisahkan.
-
-## 7. Hubungan background traffic, congestion, dan report loss
-
-Background adalah trafik NDN tambahan yang sah. Pada workload tertentu, background menimbulkan congestion nyata dan mengganggu jalur monitoring.
-
-Dari 369.520 report yang dibuat:
-
-- 365.975 tersedia tepat waktu;
-- 3.545 tidak pernah diterima sampai run berakhir;
-- 0 report datang terlambat melewati deadline 250 ms.
-
-Semua report yang tidak diterima muncul pada kondisi dengan background: 1.712 pada background-only dan 1.833 pada IFA+background. Tidak ada report hilang pada normal atau IFA tanpa background. Karena itu, data ini menunjukkan **background/congestion dapat membuat report tidak tersedia**, tetapi tidak menunjukkan bahwa IFA sendirian menyebabkan report loss.
-
-## 8. Dua jenis pengujian yang jangan tertukar
-
-### Smoke test simulator
-
-Perintah berikut memeriksa bahwa skenario normal dan IFA ringan dapat berjalan:
+From the [`detector/`](detector/README.md) directory after installing [`requirements.txt`](requirements.txt):
 
 ```bash
-cd config/architecture/ndnsim/ifa-pilot
-bash scripts/run_ifa.sh config/ifa-base-00000-s1.json
-bash scripts/run_ifa.sh config/ifa-atk1-00050-s1.json
+cd detector
+
+# 1. Verify SHA-256 checksums for all dataset, code, and checkpoint files
+python verify_files.py
+
+# 2. Evaluate the 10 frozen seed-11 checkpoints on the 4,608-row test set
+python test.py --models-dir pretrained --out results/eval-original --reference reference/expected-original-predictions.csv
+
+# 3. Retrain all models with the selected hyperparameters (seeds 11, 23, 37)
+python train.py --models all --seeds 11,23,37 --search selected --out results/train-selected
+python test.py --models-dir results/train-selected --out results/test-selected
+
+# 4. Run the full 8-candidate validation grid search
+python train.py --models all --seeds 11,23,37 --search grid --out results/train-grid
+python test.py --models-dir results/train-grid --out results/test-grid
 ```
 
-Ini menghasilkan satu run simulator dan bukti seperti PIT, Data consumer, dan report collector. Ini **bukan** test set ML final.
-
-### One-shot test ML
-
-Test ML memakai 16 run dari empat workload family yang tidak dipakai untuk training atau pemilihan model. Pipeline telah dikunci dan evaluator menolak menjalankan test untuk kedua kali. Hasil yang sudah tersimpan harus dilaporkan apa adanya; jangan melakukan retuning berdasarkan test.
-
-## 9. Klaim yang aman untuk paper
-
-Klaim yang didukung:
-
-- telemetry router yang tersedia secara kausal dapat mendeteksi aktivitas IFA pada topologi simulasi tetap;
-- desain pengumpulan report melalui NDN dapat direkonstruksi menjadi input graf-temporal terpusat;
-- evaluasi family-disjoint dan one-shot test mengurangi risiko kebocoran;
-- pada eksperimen ini, baseline sederhana menyamai atau mengungguli model graf-temporal;
-- background traffic dapat mengganggu ketersediaan report monitoring.
-
-Klaim yang tidak didukung:
-
-- GraphSAGE+GRU adalah model terbaik;
-- model sudah melakukan deteksi real-time di dalam ndnSIM;
-- model sudah terbukti general untuk topologi atau jaringan nyata lain;
-- IFA sendiri menyebabkan congestion atau report loss;
-- empat family pada test cukup untuk generalisasi luas.
-
-## 10. Fokus evaluasi lokal sebelumnya
-
-Evaluasi lokal ini mendukung pembahasan metodologis berikut; fokus paper aktif kini mengikuti RQ monitoring dan prioritization pada dokumen status penelitian:
-
-1. topologi NDN sepuluh router dan agent pengukuran lokal;
-2. report monitoring yang dikirim sebagai Data NDN;
-3. rekonstruksi dataset arrival-only/causal pada collector;
-4. pemodelan topologi melalui GraphSAGE dan dinamika waktu melalui GRU;
-5. pembandingan adil dengan baseline sederhana;
-6. hasil negatif yang penting: kompleksitas graf-temporal tidak memberi keuntungan akurasi pada domain tetap ini;
-7. batas deployment: evaluasi masih offline dan lintas topologi belum diuji.
-
-## 11. Status artefak publik
-
-Repository ini memuat source simulator, runner, konfigurasi dan dokumentasi. Commit3499c7a juga menambahkan modul replay offline serta satu checkpoint GraphSAGE+GRU Mask+Age seed11 dari campaign teman. Checkpoint itu bukan model terpilih evaluasi lokal v3+v4 ini. Dataset dan paket training/evaluasi lengkap belum dipublikasikan; clone publik belum mereproduksi training ML atau seluruh campaign FIFO-Priority.
+*(For archival notes on the earlier local v3+v4 evaluation and single-model replay module prior to the 10-model expansion, see [`config/architecture/README.md`](config/architecture/README.md)).*

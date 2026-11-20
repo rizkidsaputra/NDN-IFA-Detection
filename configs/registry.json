@@ -1,0 +1,299 @@
+{
+  "models": [
+    {
+      "model": "tuned-logistic-s11",
+      "origin": "new",
+      "group": "tuned-logistic",
+      "role": "tuned",
+      "id": "m005",
+      "kind": "logistic",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.8257440328598022,
+      "configuration": {
+        "C": 1
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m005.joblib",
+      "checkpoint_sha256": "4461bde4b7f37d6d462e8ff59b301d0d5be58d64a40a9154c0e064b86736309f"
+    },
+    {
+      "model": "tuned-rf-s11",
+      "origin": "new",
+      "group": "tuned-rf",
+      "role": "tuned",
+      "id": "m016",
+      "kind": "rf",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.5562573827856727,
+      "configuration": {
+        "trees": 400,
+        "minimum": 5
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m016.joblib",
+      "checkpoint_sha256": "eb40b0778c638efd89b5e0b25314fa24157af08ad7fc2f7d1254d16cd70542b7"
+    },
+    {
+      "model": "tuned-histgb-s11",
+      "origin": "new",
+      "group": "tuned-histgb",
+      "role": "tuned",
+      "id": "m025",
+      "kind": "histgb",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.48723809050647016,
+      "configuration": {
+        "iterations": 400,
+        "minimum": 20
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m025.joblib",
+      "checkpoint_sha256": "3649d346585049180059a7e49b5a4827a6ac6b8334b757c0f28bc50e6b48007d"
+    },
+    {
+      "model": "tuned-gbdt-s11",
+      "origin": "new",
+      "group": "tuned-gbdt",
+      "role": "tuned",
+      "id": "m037",
+      "kind": "gbdt",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.5719019212475082,
+      "configuration": {
+        "iterations": 400,
+        "minimum": 40
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m037.joblib",
+      "checkpoint_sha256": "dcdf26e2a04b5edc59c00e1ac2a0fd985dec5706be7709dec1dc5f2324b1b326"
+    },
+    {
+      "model": "tuned-adaboost-s11",
+      "origin": "new",
+      "group": "tuned-adaboost",
+      "role": "tuned",
+      "id": "m044",
+      "kind": "adaboost",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.7041607104559277,
+      "configuration": {
+        "iterations": 400,
+        "minimum": 1
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m044.joblib",
+      "checkpoint_sha256": "a9e7d456d6ea173e5aa5abaed7eee8504e259e0b93d21977a2d078ac713479eb"
+    },
+    {
+      "model": "tuned-xgboost-s11",
+      "origin": "new",
+      "group": "tuned-xgboost",
+      "role": "tuned",
+      "id": "m050",
+      "kind": "xgboost",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.5991024971008301,
+      "configuration": {
+        "iterations": 200,
+        "leaves": 7
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m050.joblib",
+      "checkpoint_sha256": "4291c1be4032c62bb23d357cf27c91967361003ee37a7f893d38b512b3b4d376"
+    },
+    {
+      "model": "tuned-lightgbm-s11",
+      "origin": "new",
+      "group": "tuned-lightgbm",
+      "role": "tuned",
+      "id": "m065",
+      "kind": "lightgbm",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.41849700498053816,
+      "configuration": {
+        "iterations": 400,
+        "minimum": 10
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m065.joblib",
+      "checkpoint_sha256": "e4cb647751e46b0eb4725d7eaf4792ec11956490cadfb3c5f3ab575706a6b39e"
+    },
+    {
+      "model": "tuned-catboost-s11",
+      "origin": "new",
+      "group": "tuned-catboost",
+      "role": "tuned",
+      "id": "m073",
+      "kind": "catboost",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.5118896285264125,
+      "configuration": {
+        "iterations": 200,
+        "depth": 6
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m073.joblib",
+      "checkpoint_sha256": "df4ef823dd0f89a667e26225fd07d3ef2215bd3b0a6cb9f05f2cc564992211ba"
+    },
+    {
+      "model": "tuned-gru-s11",
+      "origin": "new",
+      "group": "tuned-gru",
+      "role": "tuned",
+      "id": "m084",
+      "kind": "gru",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.5476921796798706,
+      "configuration": {
+        "lr": 0.001,
+        "dropout": 0.0,
+        "hidden": 32
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m084.pt",
+      "checkpoint_sha256": "f3de065d176a19e9de1c09e602a7cbcb9d9e35e4cba8f02d323c9f4cc5c28d01"
+    },
+    {
+      "model": "tuned-graph-s11",
+      "origin": "new",
+      "group": "tuned-graph",
+      "role": "tuned",
+      "id": "m097",
+      "kind": "graph",
+      "representation": "locf",
+      "seed": 11,
+      "threshold": 0.676605224609375,
+      "configuration": {
+        "lr": 0.001,
+        "dropout": 0.15,
+        "hidden": 64
+      },
+      "checkpoint": "all-models-20261024/outputs/artifacts/m097.pt",
+      "checkpoint_sha256": "c0d792a45a48b3566ce116873dcf13ceb966c5d2437584cb29d85a03c6927064"
+    }
+  ],
+  "freeze_sha256": "4873a1962800c3d4ef32c922b0fe2ec24714458cef7610b46b20f0fef3b2153e",
+  "scaler_sha256": "a3f4093fe2ffdf76696cfbae35157c0cb60763e59f0d06b6ee8450d4be66ed29",
+  "adjacency": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.3333333432674408,
+      0.3333333432674408,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.3333333432674408,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.3333333432674408,
+      0.3333333432674408,
+      0.0,
+      0.0,
+      0.0,
+      0.3333333432674408
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      0.0,
+      0.0,
+      0.5
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.5,
+      0.5,
+      0.0
+    ]
+  ]
+}
